@@ -1,5 +1,9 @@
-@forward "variables"; // we use css variables
-@forward "mixins"; // https://sass-lang.com/documentation/at-rules/mixin/
-@forward "helpers"; // https://ricostacruz.com/rscss/helpers.html
+@forward 'variables'; // we use css variables
+@forward 'mixins'; // https://sass-lang.com/documentation/at-rules/mixin/
+@forward 'helpers'; // https://ricostacruz.com/rscss/helpers.html
 
 // styling based on https://ricostacruz.com/rscss/
+head,
+body {
+  margin: 0;
+}
