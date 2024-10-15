@@ -11,7 +11,6 @@ export default class Camera {
   sizes: Sizes
   scene: Scene
   canvas: HTMLCanvasElement
-  controls: OrbitControls
 
   constructor() {
     this.experience = new Experience()
@@ -20,7 +19,6 @@ export default class Camera {
     this.canvas = this.experience.canvas
 
     this.setInstance()
-    this.setOrbitControls()
   }
 
   private setInstance() {
@@ -35,17 +33,10 @@ export default class Camera {
     this.scene.add(this.instance)
   }
 
-  private setOrbitControls() {
-    this.controls = new OrbitControls(this.instance, this.canvas)
-    this.controls.enableDamping = true
-  }
-
   public resize() {
     this.instance.aspect = this.sizes.width / this.sizes.height
     this.instance.updateProjectionMatrix()
   }
 
-  public update() {
-    this.controls.update()
-  }
+  public update() {}
 }
