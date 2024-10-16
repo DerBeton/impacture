@@ -10,17 +10,15 @@
       <div class="vote">
         <h3 class="question">{{ question }}</h3>
         <div class="vote-buttons">
-          <VoteButton type="yes"></VoteButton>
-          <VoteButton type="no"></VoteButton>
+          <VoteButton type="yes" @yes="emit('voted', 'yes')"></VoteButton>
+          <VoteButton type="no" @no="emit('voted', 'no')"></VoteButton>
         </div>
       </div>
     </div>
     <div class="back-side">
       <span @click="flipCard()" class="flip"></span>
       <p class="description">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa officiis
-        vel quae reprehenderit nesciunt commodi ea unde eos, aut natus amet
-        tenetur voluptas ad. Exercitationem neque inventore at unde ipsum!
+        {{ description }}
       </p>
     </div>
   </div>
@@ -32,6 +30,7 @@ import VoteButton from './VoteButtons.vue'
 
 defineProps<{
   question: string
+  description: string
 }>()
 
 const voteCardElement = ref<HTMLElement | null>()
@@ -40,6 +39,10 @@ const isFlipped = ref<boolean>(false)
 function flipCard() {
   isFlipped.value = !isFlipped.value
 }
+
+const emit = defineEmits<{
+  voted: [answer: 'yes' | 'no']
+}>()
 </script>
 
 <style lang="scss" scoped>
