@@ -1,0 +1,137 @@
+<template>
+  <div
+    ref="voteCardElement"
+    class="vote-card"
+    :class="{ '-flipped': isFlipped }"
+  >
+    <div class="front-side">
+      <span @click="flipCard()" class="flip"></span>
+      <div class="image"></div>
+      <div class="vote">
+        <h3 class="question">{{ question }}</h3>
+        <div class="vote-buttons">
+          <VoteButton type="yes" @yes="emit('voted', 'yes')"></VoteButton>
+          <VoteButton type="no" @no="emit('voted', 'no')"></VoteButton>
+        </div>
+      </div>
+    </div>
+    <div class="back-side">
+      <span @click="flipCard()" class="flip"></span>
+      <p class="description">
+        {{ description }}
+      </p>
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { ref } from 'vue'
+import VoteButton from './VoteButtons.vue'
+
+defineProps<{
+  question: string
+  description: string
+}>()
+
+const voteCardElement = ref<HTMLElement | null>()
+const isFlipped = ref<boolean>(false)
+
+function flipCard() {
+  isFlipped.value = !isFlipped.value
+}
+
+const emit = defineEmits<{
+  voted: [answer: 'yes' | 'no']
+}>()
+</script>
+
+<style lang="scss" scoped>
+.vote-card {
+  position: relative;
+  width: 60rem;
+  max-width: 60rem;
+  height: 28rem;
+  margin: 0 auto;
+
+  // for 3d flip effect
+  perspective: 1000px;
+  transform-style: preserve-3d;
+
+  &.-flipped {
+    .front-side {
+      transform: rotateY(-180deg);
+    }
+
+    .back-side {
+      transform: rotateY(0deg);
+    }
+  }
+}
+
+.front-side,
+.back-side {
+  @include border-md;
+
+  background-color: var(--color-bg-light);
+  position: absolute;
+  inset: 0;
+  padding: 3rem 4.5rem 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  transition: transform 0.6s;
+  backface-visibility: hidden;
+
+  -webkit-box-shadow: 10px 10px 3px 0px rgba(148, 148, 148, 0.64);
+  -moz-box-shadow: 10px 10px 3px 0px rgba(148, 148, 148, 0.64);
+  box-shadow: 10px 10px 3px 0px rgba(148, 148, 148, 0.64);
+}
+
+.front-side,
+.back-side {
+  > .flip {
+    cursor: pointer;
+    position: absolute;
+    top: 1.4rem;
+    right: 1.4rem;
+    display: inline-flex;
+
+    &::before {
+      content: '';
+      background-image: url('/icons/flip.svg');
+      background-size: 30px 30px;
+      background-position: center;
+      height: 30px;
+      width: 30px;
+    }
+  }
+
+  > .image {
+    @include border-md;
+
+    width: 50%;
+    aspect-ratio: 1;
+    background-color: lightgray;
+  }
+
+  > .vote > .question {
+    @include text-lg;
+
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.back-side {
+  transform: rotateY(180deg);
+}
+
+.vote-buttons {
+  width: 100%;
+  justify-content: center;
+  column-gap: 1.8rem;
+  display: flex;
+  flex-direction: row;
+}
+</style>

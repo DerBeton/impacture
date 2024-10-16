@@ -1,9 +1,20 @@
 @forward 'variables'; // we use css variables
 @forward 'mixins'; // https://sass-lang.com/documentation/at-rules/mixin/
 @forward 'helpers'; // https://ricostacruz.com/rscss/helpers.html
+@forward 'fonts';
+
+@use 'mixins' as *;
 
 // styling based on https://ricostacruz.com/rscss/
 head,
 body {
+  @include font-default;
+  @include text-md;
+
+  color: var(--color-text-main);
   margin: 0;
+}
+
+* {
+  box-sizing: border-box;
 }

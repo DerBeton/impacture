@@ -2,3 +2,61 @@
 Mixins allow you to define styles that can be re-used throughout your stylesheet.
 They make it easy to avoid using non-semantic classes like .float-left, and to distribute collections of styles in libraries.
  */
+
+// font mixins
+
+@mixin font-default {
+  font-family: 'Inter', sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+@mixin text-sm {
+  color: white;
+}
+
+@mixin text-md {
+  color: white;
+}
+
+@mixin text-lg {
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+@mixin text-xl {
+  font-size: 6rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+}
+
+@mixin text-vote-button {
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+// border mixins
+@mixin border-md {
+  border-radius: 1.5rem;
+}
+
+@mixin border-lg {
+  border-radius: 3.6rem;
+}
+
+// buttons
+@mixin button-default {
+  @include border-lg;
+  @include text-vote-button;
+
+  cursor: pointer;
+  padding: 0.6rem 1rem;
+  // padding-block: 0.6rem;
+
+  background-color: white;
+}

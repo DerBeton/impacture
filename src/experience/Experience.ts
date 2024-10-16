@@ -19,6 +19,7 @@ export default class Experience {
   renderer!: Renderer
   world!: World
   resources!: Resources
+  selectedFuture?: string
 
   public constructor(canvasElement?: HTMLCanvasElement) {
     if (instance) {
@@ -39,9 +40,14 @@ export default class Experience {
     this.renderer = new Renderer()
     this.resources = new Resources(sources)
     this.world = new World()
+    this.selectedFuture = ''
 
     // Events
     this.registerEventListeners()
+  }
+
+  public setFuture(future: string) {
+    this.selectedFuture = future
   }
 
   private registerEventListeners() {
