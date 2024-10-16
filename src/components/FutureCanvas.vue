@@ -6,13 +6,22 @@
 
 <script setup lang="ts">
 import Experience from '@/experience/Experience'
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
+
+const props = defineProps<{
+  votes: string | string[]
+}>()
+
+const voteString = computed(() => {
+  return Array.isArray(props.votes) ? props.votes[0] : props.votes
+})
 
 const canvasElement = ref<HTMLCanvasElement | null>()
 
 onMounted(() => {
   if (canvasElement.value) {
     const experience = new Experience(canvasElement.value)
+    experience.setFuture(voteString.value)
   }
 })
 </script>

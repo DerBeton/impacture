@@ -17,13 +17,14 @@
 
     <div v-if="votingCompleted">Your answer is: {{ votingResult }}</div>
 
-    <button class="restart"><--- Restart</button>
+    <button class="restart" @click="router.push('/')"><--- Restart</button>
   </div>
 </template>
 
 <script setup lang="ts">
 import VoteCard from '@/components/voting/VoteCard.vue'
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
+import router from '@/router'
 
 const activeCard = ref<number>(0)
 
@@ -83,6 +84,11 @@ const votes = ref<Vote[]>([
     answer: '',
   },
 ])
+
+// go to visualization with the result of the voting
+watch(votingCompleted, () => {
+  router.push(`/vision/${votingResult.value}`)
+})
 </script>
 
 <style lang="scss" scoped>
