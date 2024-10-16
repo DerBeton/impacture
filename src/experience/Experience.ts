@@ -6,6 +6,8 @@ import Time from './utils/Time'
 import World from './world/World'
 import Resources, { type ResourceItem } from './utils/Resources'
 import sources from './sources'
+import LabelRenderer from './LabelRenderer'
+import Controls from './Controls'
 
 let instance: Experience | null = null
 
@@ -17,6 +19,8 @@ export default class Experience {
   scene!: THREE.Scene
   time!: Time
   renderer!: Renderer
+  labelRenderer!: LabelRenderer
+  controls!: Controls
   world!: World
   resources!: Resources
   selectedFuture?: string
@@ -38,6 +42,8 @@ export default class Experience {
     this.scene = new THREE.Scene()
     this.camera = new Camera()
     this.renderer = new Renderer()
+    this.labelRenderer = new LabelRenderer()
+    this.controls = new Controls()
     this.resources = new Resources(sources)
     this.world = new World()
     this.selectedFuture = ''
@@ -63,10 +69,13 @@ export default class Experience {
   private resize() {
     this.camera.resize()
     this.renderer.resize()
+    this.labelRenderer.resize()
   }
 
   private update() {
     this.camera.update()
+    this.controls.update()
     this.renderer.update()
+    this.labelRenderer.update()
   }
 }
