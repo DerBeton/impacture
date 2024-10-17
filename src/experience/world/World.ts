@@ -4,6 +4,7 @@ import Experience from '../Experience'
 import Environment from './Environment'
 import type Resources from '../utils/Resources'
 import Tree from './Tree'
+import House from './House'
 
 export default class World {
   experience: Experience
@@ -11,6 +12,7 @@ export default class World {
   environment!: Environment
   resources: Resources
   tree?: Tree
+  house?: House
 
   constructor() {
     this.experience = new Experience()
@@ -19,7 +21,8 @@ export default class World {
 
     // Listener
     this.resources.on('ready', () => {
-      this.loadTree()
+      //  this.loadTree()
+      this.loadHouse()
       this.environment = new Environment() // after loading objects
     })
 
@@ -37,5 +40,8 @@ export default class World {
 
   private loadTree() {
     this.tree = new Tree()
+  }
+  private loadHouse() {
+    this.house = new House()
   }
 }
