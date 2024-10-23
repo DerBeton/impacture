@@ -6,7 +6,7 @@ They make it easy to avoid using non-semantic classes like .float-left, and to d
 // font mixins
 
 @mixin font-default {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Be Vietnam Pro', sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
 }
@@ -34,6 +34,8 @@ They make it easy to avoid using non-semantic classes like .float-left, and to d
 }
 
 @mixin text-vote-button {
+  @include font-default;
+
   font-size: 1.5rem;
   font-style: normal;
   font-weight: 400;
