@@ -9,34 +9,35 @@ export interface ResourceItem {
 }
 
 export default class Resources extends EventEmitter {
-  sources: ResourceItem[]
-  items: { [key: string]: any }
-  toLoad: number
-  loaded: number
-  loaders!: {
-    gltfLoader: GLTFLoader
-    textureLoader: THREE.TextureLoader
-    cubeTextureLoader: THREE.CubeTextureLoader
+  sources?: ResourceItem[]
+  items: { [key: string]: any } = {}
+  toLoad: number = 0
+  loaded: number = 0
+  loaders: {
+    gltfLoader?: GLTFLoader
+    textureLoader?: THREE.TextureLoader
+    cubeTextureLoader?: THREE.CubeTextureLoader
     // dracoLoader: DRACOLoader
-  }
+  } = {}
 
-  constructor(sources: ResourceItem[]) {
+  constructor(sources: ResourceItem[] | null) {
     super()
 
+    if (sources) {
+      this.setSources(sources)
+    }
+  }
+
+  public setSources(sources: ResourceItem[]) {
     this.sources = sources
 
-    // @ts-ignore
-    this.items = {}
     this.toLoad = this.sources.length
-    this.loaded = 0
 
     this.setLoaders()
     this.startLoading()
   }
 
   private setLoaders() {
-    // @ts-ignore
-    this.loaders = {}
     this.loaders.gltfLoader = new GLTFLoader()
     this.loaders.textureLoader = new THREE.TextureLoader()
     this.loaders.cubeTextureLoader = new THREE.CubeTextureLoader()
@@ -44,19 +45,24 @@ export default class Resources extends EventEmitter {
   }
 
   private startLoading() {
+    if (!this.sources) {
+      console.warn('no resources set!')
+      return
+    }
+
     // Load each source
     for (const source of this.sources) {
       if (source.type === 'gltfModel') {
-        this.loaders.gltfLoader.load(source.path[0], file => {
+        this.loaders.gltfLoader?.load(source.path[0], file => {
           // console.log(source, file)
           this.sourceLoaded(source, file)
         })
       } else if (source.type === 'texture') {
-        this.loaders.textureLoader.load(source.path[0], file => {
+        this.loaders.textureLoader?.load(source.path[0], file => {
           console.log(source, file)
         })
       } else if (source.type === 'cubeTexture') {
-        this.loaders.cubeTextureLoader.load(source.path, file => {
+        this.loaders.cubeTextureLoader?.load(source.path, file => {
           console.log(source, file)
         })
       }
