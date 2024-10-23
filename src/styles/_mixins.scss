@@ -6,7 +6,7 @@ They make it easy to avoid using non-semantic classes like .float-left, and to d
 // font mixins
 
 @mixin font-default {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Be Vietnam Pro', sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
 }
@@ -16,7 +16,10 @@ They make it easy to avoid using non-semantic classes like .float-left, and to d
 }
 
 @mixin text-md {
-  color: white;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 @mixin text-lg {
@@ -33,7 +36,16 @@ They make it easy to avoid using non-semantic classes like .float-left, and to d
   line-height: normal;
 }
 
+@mixin text-xxl {
+  font-size: 12.5rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1;
+}
+
 @mixin text-vote-button {
+  @include font-default;
+
   font-size: 1.5rem;
   font-style: normal;
   font-weight: 400;
@@ -42,11 +54,11 @@ They make it easy to avoid using non-semantic classes like .float-left, and to d
 
 // border mixins
 @mixin border-md {
-  border-radius: 1.5rem;
+  border-radius: var(--border-radius-md);
 }
 
 @mixin border-lg {
-  border-radius: 3.6rem;
+  border-radius: var(--border-radius-lg);
 }
 
 // buttons
