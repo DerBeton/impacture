@@ -44,7 +44,7 @@ export default class Experience {
     this.renderer = new Renderer()
     this.labelRenderer = new LabelRenderer()
     this.controls = new Controls()
-    this.resources = new Resources(sources)
+    this.resources = new Resources(null)
     this.world = new World()
     this.selectedFuture = ''
 
