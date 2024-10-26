@@ -4,7 +4,6 @@
 
 <script setup lang="ts">
 import FutureCanvas from '@/components/FutureCanvas.vue'
-import router from '@/router'
 </script>
 
 <style lang="scss" scoped>

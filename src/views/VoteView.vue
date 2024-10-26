@@ -1,7 +1,21 @@
 <template>
   <div class="vote-view">
     <h1 class="title">
-      Abstimmungen <span>---></span><br />
+      Abstimmungen
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="355"
+        height="60"
+        viewBox="0 0 355 60"
+        class="arrow"
+        fill="none"
+      >
+        <path
+          d="M353.828 32.8284C355.391 31.2663 355.391 28.7337 353.828 27.1716L328.373 1.71573C326.81 0.153631 324.278 0.153631 322.716 1.71573C321.154 3.27783 321.154 5.81049 322.716 7.37258L345.343 30L322.716 52.6274C321.154 54.1895 321.154 56.7222 322.716 58.2843C324.278 59.8464 326.81 59.8464 328.373 58.2843L353.828 32.8284ZM0 34H351V26H0V34Z"
+          fill="black"
+        />
+      </svg>
+      <br />
       was stimmst du ab?
     </h1>
 
@@ -11,13 +25,23 @@
         :key="vote.id"
         :question="vote.title"
         :description="vote.description"
+        :answer="vote.answer"
         @voted="answer => handleVote(index, answer)"
-      />
+      >
+        <template #progress>
+          <ProgressIndicator
+            :key="1"
+            :current="activeCard"
+            :total="votes.length"
+            @goto="index => gotoCard(index)"
+          ></ProgressIndicator>
+        </template>
+      </VoteCard>
     </template>
 
     <div v-if="votingCompleted">Your answer is: {{ votingResult }}</div>
 
-    <button class="restart" @click="router.push('/')"><--- Restart</button>
+    <button class="restart -arrow-l" @click="router.push('/')">Neustart</button>
   </div>
 </template>
 
@@ -25,13 +49,18 @@
 import VoteCard from '@/components/voting/VoteCard.vue'
 import { computed, ref, watch } from 'vue'
 import router from '@/router'
+import ProgressIndicator from '@/components/voting/ProgressIndicator.vue'
 
 const activeCard = ref<number>(0)
 
-function handleVote(index: number, answer: string) {
+function handleVote(index: number, answer: 'yes' | 'no') {
   votes.value[index].answer = answer
 
   activeCard.value++
+}
+
+function gotoCard(index: number) {
+  activeCard.value = index
 }
 
 const votingCompleted = computed(() => {
@@ -51,7 +80,7 @@ export interface Vote {
   id: string
   title: string
   description: string
-  answer: string
+  answer: 'yes' | 'no' | ''
 }
 
 const votes = ref<Vote[]>([
@@ -95,6 +124,7 @@ watch(votingCompleted, () => {
 .vote-view {
   display: flex;
   flex-direction: column;
+  row-gap: 2rem;
   width: 100%;
   height: 100%;
   padding: 4.5rem 6rem;
@@ -102,6 +132,8 @@ watch(votingCompleted, () => {
 
   > .title {
     @include text-xl;
+
+    margin-block: 0;
   }
 
   > .restart {

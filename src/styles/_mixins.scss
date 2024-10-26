@@ -71,4 +71,24 @@ They make it easy to avoid using non-semantic classes like .float-left, and to d
   // padding-block: 0.6rem;
 
   background-color: white;
+
+  &:hover {
+    background-color: var(--color-grey-light);
+  }
+
+  &.-arrow-r::before,
+  &.-arrow-l::before {
+    content: '';
+    display: inline-block;
+    background-image: url('/icons/arrow.svg');
+    background-size: 2.5rem 2.5rem;
+    background-position: center;
+    height: 1rem;
+    width: 2.5rem;
+    margin-right: 6px;
+  }
+
+  &.-arrow-l::before {
+    transform: rotate(180deg);
+  }
 }
