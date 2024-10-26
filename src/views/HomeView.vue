@@ -16,7 +16,7 @@
           <br><br>
           Klicke “Jetzt Abstimmen” um deinen Impact zu starten!
         </p>
-        <button @click="router.push('/vote')" class="button">
+        <button @click="router.push('/vote')" class="button -arrow-r">
         Jetzt Abstimmen
       </button>
       </div>
@@ -48,7 +48,9 @@ import router from '@/router'
     position: relative;
     width: 100%;
     height: 100%;
-    background-color: var(--color-accent-main);
+    // background-color: var(--color-accent-main);
+    background: linear-gradient(129deg, #F8FFE8 25.5%, #DCF2A9 63.66%), linear-gradient(112deg, #E2F3FF 23.65%, #9CD4FF 86.89%);
+
     /* background: linear-gradient(129deg, #dcf2a9 25.5%, #f8ffe8 63.66%),
       linear-gradient(112deg, #e2f3ff 23.65%, #9cd4ff 86.89%); */
 
