@@ -72,6 +72,10 @@ They make it easy to avoid using non-semantic classes like .float-left, and to d
 
   background-color: white;
 
+  &:hover {
+    background-color: #eeeeee;
+  }
+
   &.-arrow-r::before,
   &.-arrow-l::before {
     content: '';

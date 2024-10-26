@@ -4,7 +4,7 @@
     class="vote-card"
     :class="{ '-flipped': isFlipped }"
   >
-    <div class="front-side">
+    <div class="front-side" :style="cardStyleFront">
       <span @click="flipCard()" class="flip"></span>
       <div class="image"></div>
       <div class="vote">
@@ -15,7 +15,7 @@
         </div>
       </div>
     </div>
-    <div class="back-side">
+    <div class="back-side" :style="cardStyleBack">
       <span @click="flipCard()" class="flip"></span>
       <p class="description">
         {{ description }}
@@ -25,8 +25,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import VoteButton from './VoteButtons.vue'
+import { useParallax } from '@vueuse/core'
 
 defineProps<{
   question: string
@@ -34,7 +35,19 @@ defineProps<{
 }>()
 
 const voteCardElement = ref<HTMLElement | null>()
+const { tilt, roll } = useParallax(voteCardElement)
 const isFlipped = ref<boolean>(false)
+
+const PARALLAX_INTENSITY = 10
+const cardStyleFront = computed(() => ({
+  transition: '.3s ease-out all',
+  transform: `rotateX(${roll.value * PARALLAX_INTENSITY}deg) rotateY(${tilt.value * PARALLAX_INTENSITY + 180 * (isFlipped.value ? -1 : 0)}deg)`,
+}))
+
+const cardStyleBack = computed(() => ({
+  transition: '.3s ease-out all',
+  transform: `rotateX(${roll.value * PARALLAX_INTENSITY}deg) rotateY(${tilt.value * PARALLAX_INTENSITY + 180 * (isFlipped.value ? 0 : 1)}deg)`,
+}))
 
 function flipCard() {
   isFlipped.value = !isFlipped.value
@@ -59,11 +72,11 @@ const emit = defineEmits<{
 
   &.-flipped {
     .front-side {
-      transform: rotateY(-180deg);
+      // transform: rotateY(-180deg);
     }
 
     .back-side {
-      transform: rotateY(0deg);
+      // transform: rotateY(0deg);
     }
   }
 }
@@ -125,6 +138,10 @@ const emit = defineEmits<{
 
 .back-side {
   transform: rotateY(180deg);
+
+  > .description {
+    @include text-md;
+  }
 }
 
 .vote-buttons {
