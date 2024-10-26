@@ -25,8 +25,18 @@
         :key="vote.id"
         :question="vote.title"
         :description="vote.description"
+        :answer="vote.answer"
         @voted="answer => handleVote(index, answer)"
-      />
+      >
+        <template #progress>
+          <ProgressIndicator
+            :key="1"
+            :current="activeCard"
+            :total="votes.length"
+            @goto="index => gotoCard(index)"
+          ></ProgressIndicator>
+        </template>
+      </VoteCard>
     </template>
 
     <div v-if="votingCompleted">Your answer is: {{ votingResult }}</div>
@@ -39,13 +49,18 @@
 import VoteCard from '@/components/voting/VoteCard.vue'
 import { computed, ref, watch } from 'vue'
 import router from '@/router'
+import ProgressIndicator from '@/components/voting/ProgressIndicator.vue'
 
 const activeCard = ref<number>(0)
 
-function handleVote(index: number, answer: string) {
+function handleVote(index: number, answer: 'yes' | 'no') {
   votes.value[index].answer = answer
 
   activeCard.value++
+}
+
+function gotoCard(index: number) {
+  activeCard.value = index
 }
 
 const votingCompleted = computed(() => {
@@ -65,7 +80,7 @@ export interface Vote {
   id: string
   title: string
   description: string
-  answer: string
+  answer: 'yes' | 'no' | ''
 }
 
 const votes = ref<Vote[]>([
