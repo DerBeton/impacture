@@ -10,19 +10,24 @@ export default class Tooltip {
   offset: THREE.Vector3
   objectCSS?: CSS2DObject
 
-  constructor(model: THREE.Object3D, text: string, offset?: THREE.Vector3) {
+  constructor(
+    model: THREE.Object3D,
+    title: string,
+    text: string,
+    offset?: THREE.Vector3,
+  ) {
     this.experience = new Experience()
     this.model = model
     this.offset = offset ?? new THREE.Vector3(0, 0, 0)
 
-    this.create(text)
+    this.create(title, text)
   }
 
-  private create(text: string) {
+  private create(title: string, text: string) {
     const tooltipContainer = document.createElement('div')
 
     // create new tooltip from vue component
-    const tooltipApp = createApp(TooltipVue, { text })
+    const tooltipApp = createApp(TooltipVue, { title, text })
     tooltipApp.mount(tooltipContainer)
 
     this.objectCSS = new CSS2DObject(tooltipContainer)

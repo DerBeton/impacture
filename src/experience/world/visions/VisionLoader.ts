@@ -32,9 +32,13 @@ export default abstract class VisionLoader implements VisionType {
     this.setModel()
   }
 
-  protected addToolTip(obj: THREE.Object3D | undefined, text: string) {
+  protected addToolTip(
+    obj: THREE.Object3D | undefined,
+    title: string,
+    text: string,
+  ) {
     if (obj instanceof THREE.Object3D) {
-      const tooltip = new Tooltip(obj, text, new THREE.Vector3(0, 0, 0))
+      const tooltip = new Tooltip(obj, title, text, new THREE.Vector3(0, 0, 0))
     }
   }
 
