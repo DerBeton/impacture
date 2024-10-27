@@ -29,7 +29,15 @@ export default class BioVision extends VisionLoader {
   }
 
   public onReady(): void {
-    this.addToolTip(this.getObjectByName('Antenna'), 'Antenna')
-    this.addToolTip(this.getObjectByName('Gardenbed'), 'Gardenbed')
+    this.addToolTip(
+      this.getObjectByName('Antenna'),
+      'Antenna',
+      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officia dolores sed libero nam quaerat, aperiam perspiciatis fuga, eveniet vero vitae itaque, dicta fugit expedita! Soluta praesentium magni enim eius fugit!',
+    )
+    this.addToolTip(
+      this.getObjectByName('Gardenbed'),
+      'Gardenbed',
+      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officia dolores sed libero nam quaerat, aperiam perspiciatis fuga, eveniet vero vitae itaque, dicta fugit expedita! Soluta praesentium magni enim eius fugit!',
+    )
   }
 }
