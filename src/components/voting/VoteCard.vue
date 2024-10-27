@@ -97,6 +97,7 @@ const emit = defineEmits<{
 .back-side {
   @include border-md;
 
+  border: 2px solid black;
   background-color: var(--color-bg-light);
   position: absolute;
   inset: 0;
