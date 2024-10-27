@@ -101,9 +101,6 @@ const emit = defineEmits<{
   position: absolute;
   inset: 0;
   padding: 3rem 4.5rem 4rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-size: 30px;
   transition: transform 0.6s;
   backface-visibility: hidden;
@@ -135,20 +132,28 @@ const emit = defineEmits<{
   > .image {
     @include border-md;
 
-    width: 50%;
     aspect-ratio: 1;
     background-color: lightgray;
   }
 
-  > .vote > .question {
-    @include text-lg;
+  > .vote {
+    height: fit-content;
 
-    width: 100%;
-    text-align: center;
+    > .question {
+      @include text-lg;
+
+      width: 100%;
+      text-align: center;
+    }
   }
 }
 
 .front-side {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  column-gap: 1.5rem;
+  align-items: center;
+
   > .progress {
     position: absolute;
     right: 2.25rem;
@@ -158,6 +163,9 @@ const emit = defineEmits<{
 
 .back-side {
   transform: rotateY(180deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   > .description {
     @include text-md;

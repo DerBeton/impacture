@@ -128,7 +128,12 @@ watch(votingCompleted, () => {
   width: 100%;
   height: 100%;
   padding: 4.5rem 6rem;
-  background-color: var(--color-accent-main);
+  // background-color: var(--color-accent-main);
+  background: radial-gradient(
+    138.89% 60.45% at 50% 50%,
+    #fff 15%,
+    #d3e99f 100%
+  );
 
   > .title {
     @include text-xl;
