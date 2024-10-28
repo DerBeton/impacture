@@ -17,7 +17,7 @@ export default class Resources extends EventEmitter {
     gltfLoader?: GLTFLoader
     textureLoader?: THREE.TextureLoader
     cubeTextureLoader?: THREE.CubeTextureLoader
-    // dracoLoader: DRACOLoader
+    dracoLoader?: DRACOLoader
   } = {}
 
   constructor(sources: ResourceItem[] | null) {
@@ -41,7 +41,9 @@ export default class Resources extends EventEmitter {
     this.loaders.gltfLoader = new GLTFLoader()
     this.loaders.textureLoader = new THREE.TextureLoader()
     this.loaders.cubeTextureLoader = new THREE.CubeTextureLoader()
-    // this.loaders.dracoLoader = new DRACOLoader()
+    this.loaders.dracoLoader = new DRACOLoader()
+    this.loaders.dracoLoader.setDecoderPath('draco/') // Set the path to the Draco decoder
+    this.loaders.gltfLoader.setDRACOLoader(this.loaders.dracoLoader)
   }
 
   private startLoading() {
@@ -59,7 +61,8 @@ export default class Resources extends EventEmitter {
         })
       } else if (source.type === 'texture') {
         this.loaders.textureLoader?.load(source.path[0], file => {
-          console.log(source, file)
+          // console.log(source, file)
+          this.sourceLoaded(source, file)
         })
       } else if (source.type === 'cubeTexture') {
         this.loaders.cubeTextureLoader?.load(source.path, file => {
