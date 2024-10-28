@@ -89,28 +89,29 @@ const votes = ref<Vote[]>([
     id: 'privacy',
     title: 'Möchten Sie dem Gesetz zu mehr Privatsphäre zustimmen?',
     description:
-      'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa officiis vel quae reprehenderit nesciunt commodi ea unde eos, aut natus amet tenetur voluptas ad. Exercitationem neque inventore at unde ipsum!',
+      'Laut den Initianten soll mit der Initiative der Schutz insbesondere der Privatsphäre in der Verfassung verankert werden. Die Privatsphäre ist laut den Initianten ein wichtiger Bestandteil des Vertrauensverhältnisses zwischen Staat und Bürger. Wegen der jüngsten politischen und gesetzgeberischen Entwicklungen müsse dieses in der Bundesverfassung enthaltene Grundrecht präzisiert und ergänzt werden.',
     answer: '',
   },
   {
     id: 'nuclear',
-    title: 'Sollen Atomkraftwerke weiterentwickelt werden?',
+    title: 'Soll die Atomkraft in der Schweiz weiter eingesetzt werden?',
     description:
-      'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa officiis vel quae reprehenderit nesciunt commodi ea unde eos, aut natus amet tenetur voluptas ad. Exercitationem neque inventore at unde ipsum!',
+      'Die Initiative will den Bau neuer Kernkraftwerke in der Schweiz verbieten und die Laufzeit der bestehenden Kernkraftwerke begrenzen. Der Bund soll zudem dafür sorgen, dass weniger Energie verbraucht, die Energieeffizienz erhöht und erneuerbare Energien gefördert werden.',
     answer: '',
   },
   {
     id: 'biodiversity',
     title: 'Möchten Sie dem Gesetz zu mehr Biodiversität zustimmen?',
     description:
-      'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa officiis vel quae reprehenderit nesciunt commodi ea unde eos, aut natus amet tenetur voluptas ad. Exercitationem neque inventore at unde ipsum!',
+      'Die Initiatve will die Natur, die Landschaft und das baukulturelle Erbe zusätzlich schützen. Sie verlangt für die Biodiversität mehr Geld und mehr Schutzflächen. Insbesondere die Kantone sollen stärker in die Pflicht genommen werden, damit sie Landschaften und Ortsbilder bewahren. Zudem sollen die prägenden Elemente schützenswerter Biotope, Landschaften und Ortsbilder ungeschmälert erhalten werden. Schliesslich will die Initiative Natur, Landschaft und baukulturelles Erbe auch ausserhalb der Schutzgebiete schonen.',
     answer: '',
   },
   {
     id: 'agi',
-    title: 'Möchten Sie dem Gesetz zu Künstlicher Intelligenz zustimmen?',
+    title:
+      'Soll die Forschung von Artifical General Intelligence (AGI) gefördert werden?',
     description:
-      'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa officiis vel quae reprehenderit nesciunt commodi ea unde eos, aut natus amet tenetur voluptas ad. Exercitationem neque inventore at unde ipsum!',
+      'Es steckt viel Hoffnung in der Erforschung von Artificial General Intelligence. Damit könnten weltweit Probleme gelöst werden, die wir aktuell nicht in den Griff bekommen. Deshalb soll sich unsere Forschung auf diesen Bereich fokussieren. Dadurch können dann auch andere Probleme gelöst werden. Es könnten aber auch Gefahren entstehen, wenn wir die Kontrolle über die neuen Systeme verlieren.',
     answer: '',
   },
 ])
