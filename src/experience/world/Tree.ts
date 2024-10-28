@@ -34,6 +34,7 @@ export default class Tree {
       const tooltip = new Tooltip(
         this.model,
         'Tree',
+        'This is a simple tree. Nothing more.',
         new THREE.Vector3(0, 0, 0),
       )
     }

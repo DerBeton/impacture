@@ -4,18 +4,29 @@
     class="vote-card"
     :class="{ '-flipped': isFlipped }"
   >
-    <div class="front-side">
+    <div class="front-side" :style="cardStyleFront">
       <span @click="flipCard()" class="flip"></span>
       <div class="image"></div>
       <div class="vote">
         <h3 class="question">{{ question }}</h3>
         <div class="vote-buttons">
-          <VoteButton type="yes" @yes="emit('voted', 'yes')"></VoteButton>
-          <VoteButton type="no" @no="emit('voted', 'no')"></VoteButton>
+          <VoteButton
+            :selected="answer"
+            type="yes"
+            @yes="emit('voted', 'yes')"
+          ></VoteButton>
+          <VoteButton
+            :selected="answer"
+            type="no"
+            @no="emit('voted', 'no')"
+          ></VoteButton>
         </div>
       </div>
+      <div class="progress">
+        <slot name="progress"></slot>
+      </div>
     </div>
-    <div class="back-side">
+    <div class="back-side" :style="cardStyleBack">
       <span @click="flipCard()" class="flip"></span>
       <p class="description">
         {{ description }}
@@ -25,16 +36,30 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import VoteButton from './VoteButtons.vue'
+import { useParallax } from '@vueuse/core'
 
 defineProps<{
   question: string
   description: string
+  answer: 'yes' | 'no' | ''
 }>()
 
 const voteCardElement = ref<HTMLElement | null>()
+const { tilt, roll } = useParallax(voteCardElement)
 const isFlipped = ref<boolean>(false)
+
+const PARALLAX_INTENSITY = 5
+const cardStyleFront = computed(() => ({
+  transition: '.3s ease-out all',
+  transform: `rotateX(${roll.value * PARALLAX_INTENSITY}deg) rotateY(${tilt.value * PARALLAX_INTENSITY + 180 * (isFlipped.value ? -1 : 0)}deg)`,
+}))
+
+const cardStyleBack = computed(() => ({
+  transition: '.3s ease-out all',
+  transform: `rotateX(${roll.value * PARALLAX_INTENSITY}deg) rotateY(${tilt.value * PARALLAX_INTENSITY + 180 * (isFlipped.value ? 0 : 1)}deg)`,
+}))
 
 function flipCard() {
   isFlipped.value = !isFlipped.value
@@ -59,11 +84,11 @@ const emit = defineEmits<{
 
   &.-flipped {
     .front-side {
-      transform: rotateY(-180deg);
+      // transform: rotateY(-180deg);
     }
 
     .back-side {
-      transform: rotateY(0deg);
+      // transform: rotateY(0deg);
     }
   }
 }
@@ -72,13 +97,11 @@ const emit = defineEmits<{
 .back-side {
   @include border-md;
 
+  border: 2px solid black;
   background-color: var(--color-bg-light);
   position: absolute;
   inset: 0;
   padding: 3rem 4.5rem 4rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-size: 30px;
   transition: transform 0.6s;
   backface-visibility: hidden;
@@ -110,21 +133,44 @@ const emit = defineEmits<{
   > .image {
     @include border-md;
 
-    width: 50%;
     aspect-ratio: 1;
     background-color: lightgray;
   }
 
-  > .vote > .question {
-    @include text-lg;
+  > .vote {
+    height: fit-content;
 
-    width: 100%;
-    text-align: center;
+    > .question {
+      @include text-lg;
+
+      width: 100%;
+      text-align: center;
+    }
+  }
+}
+
+.front-side {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  column-gap: 1.5rem;
+  align-items: center;
+
+  > .progress {
+    position: absolute;
+    right: 2.25rem;
+    bottom: 1.7rem;
   }
 }
 
 .back-side {
   transform: rotateY(180deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  > .description {
+    @include text-md;
+  }
 }
 
 .vote-buttons {
