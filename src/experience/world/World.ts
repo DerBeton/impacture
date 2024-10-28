@@ -15,12 +15,12 @@ export default class World {
   tree?: Tree
   vision?: VisionType
 
-  constructor() {
+  constructor(VisionClass: new () => VisionType) {
     this.experience = new Experience()
     this.scene = this.experience.scene
     this.resources = this.experience.resources
 
-    this.setVision(BioVision)
+    this.setVision(VisionClass)
 
     // Listener
     this.resources.on('ready', () => {

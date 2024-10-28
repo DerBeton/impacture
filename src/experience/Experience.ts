@@ -8,6 +8,8 @@ import Resources, { type ResourceItem } from './utils/Resources'
 import sources from './sources'
 import LabelRenderer from './LabelRenderer'
 import Controls from './Controls'
+import BioVision from './world/visions/BioVision'
+import DomeVision from './world/visions/DomeVision'
 
 let instance: Experience | null = null
 
@@ -21,7 +23,7 @@ export default class Experience {
   renderer!: Renderer
   labelRenderer!: LabelRenderer
   controls!: Controls
-  world!: World
+  world?: World
   resources!: Resources
   selectedFuture?: string
 
@@ -45,7 +47,6 @@ export default class Experience {
     this.labelRenderer = new LabelRenderer()
     this.controls = new Controls()
     this.resources = new Resources(null)
-    this.world = new World()
     this.selectedFuture = ''
 
     // Events
@@ -54,6 +55,17 @@ export default class Experience {
 
   public setFuture(future: string) {
     this.selectedFuture = future
+
+    switch (future) {
+      case '0010':
+        this.world = new World(BioVision)
+        break
+      case '1001':
+        this.world = new World(DomeVision)
+        break
+      default:
+        console.log("future doesn't exist")
+    }
   }
 
   private registerEventListeners() {
