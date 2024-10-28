@@ -26,6 +26,7 @@
         :question="vote.title"
         :description="vote.description"
         :answer="vote.answer"
+        class="card"
         @voted="answer => handleVote(index, answer)"
       >
         <template #progress>
@@ -141,11 +142,14 @@ watch(votingCompleted, () => {
     margin-block: 0;
   }
 
+  > .card {
+    margin: auto auto;
+  }
+
   > .restart {
     @include button-default;
 
     align-self: baseline;
-    margin-top: auto;
   }
 }
 </style>
