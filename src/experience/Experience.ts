@@ -10,6 +10,7 @@ import LabelRenderer from './LabelRenderer'
 import Controls from './Controls'
 import BioVision from './world/visions/BioVision'
 import DomeVision from './world/visions/DomeVision'
+import TestVision from './world/visions/TestVision'
 
 let instance: Experience | null = null
 
@@ -62,6 +63,9 @@ export default class Experience {
         break
       case '1001':
         this.world = new World(DomeVision)
+        break
+      case '0000':
+        this.world = new World(TestVision)
         break
       default:
         console.log("future doesn't exist")
