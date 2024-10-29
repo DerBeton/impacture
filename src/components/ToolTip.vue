@@ -33,6 +33,10 @@ function toggleOpen() {
   box-shadow: 0px 0px 8px 3px rgba(255, 255, 255, 0.6);
   cursor: pointer;
 
+  &:hover {
+    box-shadow: 0px 0px 12px 3px rgba(255, 255, 255, 1);
+  }
+
   > .content {
     @include border-md;
 
