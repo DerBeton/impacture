@@ -12,9 +12,9 @@
 
       <div class="content-wrapper">
         <p class="intro">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto laboriosam, cumque aliquid ipsa perferendis rem reprehenderit ipsum voluptatum? Maiores, dolorum perferendis? Quos aut iure dolores quisquam odit obcaecati vero eius?
+          Hey Du. Die neusten Abstimmungen sind gerade eingetroffen. Nimm dir doch kurz Zeit, dich über die Themen zu informieren und gib deine Stimme ab. Jede Stimme zählt!
           <br><br>
-          Klicke “Jetzt Abstimmen” um deinen Impact zu starten!
+          Klicke auf <b>Jetzt Abstimmen</b> um deinen Impact zu starten!
         </p>
         <button @click="router.push('/vote')" class="button -arrow-r">
         Jetzt Abstimmen
