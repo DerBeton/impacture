@@ -1,7 +1,7 @@
 <template>
   <div class="home-view">
     <div class="container">
-      <WeatherStatus class="status"></WeatherStatus>
+      <DateStatus :date="new Date()" class="status"></DateStatus>
 
       <div class="header-wrapper">
         <h3 class="slogan">Make an impact on the future</h3>
@@ -25,6 +25,7 @@
 </template>
 
 <script setup lang="ts">
+import DateStatus from '@/components/home/DateStatus.vue';
 import WeatherStatus from '@/components/home/WeatherStatus.vue'
 import router from '@/router'
 </script>
@@ -40,19 +41,11 @@ import router from '@/router'
   align-items: center;
 
   > .container {
-    @include border-md;
+    @include default-ui;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative;
-    width: 100%;
-    height: 100%;
-    // background-color: var(--color-accent-main);
-    background: linear-gradient(129deg, #F8FFE8 25.5%, #DCF2A9 63.66%), linear-gradient(112deg, #E2F3FF 23.65%, #9CD4FF 86.89%);
-
-    /* background: linear-gradient(129deg, #dcf2a9 25.5%, #f8ffe8 63.66%),
-      linear-gradient(112deg, #e2f3ff 23.65%, #9cd4ff 86.89%); */
 
     > .status {
       position: absolute;
