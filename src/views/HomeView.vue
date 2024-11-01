@@ -8,16 +8,19 @@
         <h1 class="title">Impacture</h1>
       </div>
 
-      <img src="/images/iso-house-demo.png" class="house"></img>
+      <div class="house-container">
+        <ToolTip @action="isIntroStarted = true" class="tip" title="Haus" text="Das ist dein Haus!" action-text="Eigentlich nicht"></ToolTip>
+        <img src="/images/iso-house-demo.png" class="image"></img>
+      </div>
 
-      <div class="content-wrapper">
+      <div class="content-wrapper" :class="{ '-started': isIntroStarted }">
         <p class="intro">
-          Hey Du. Die neusten Abstimmungen sind gerade eingetroffen. Nimm dir doch kurz Zeit, dich über die Themen zu informieren und gib deine Stimme ab. Jede Stimme zählt!
+          Du wurdest auserwählt. Triff Entscheidungen anhand vier Abstimmungen. Aber Achtung! Überlege gut was du wählst. Schliesslich setzt du damit den Grundstein für die nächsten Generationen.
           <br><br>
-          Klicke auf <b>Jetzt Abstimmen</b> um deinen Impact zu starten!
+          Starte die Simulation, um deinen Impact auf die Zukunft zu sehen.
         </p>
         <button @click="router.push('/vote')" class="button -arrow-r">
-        Jetzt Abstimmen
+        Jetzt Starten
       </button>
       </div>
     </div>
@@ -26,8 +29,12 @@
 
 <script setup lang="ts">
 import DateStatus from '@/components/home/DateStatus.vue';
-import WeatherStatus from '@/components/home/WeatherStatus.vue'
+import ToolTip from '@/components/ToolTip.vue';
 import router from '@/router'
+import { ref } from 'vue';
+
+const isIntroStarted = ref<boolean>(false)
+
 </script>
 
 <style lang="scss" scoped>
@@ -53,10 +60,21 @@ import router from '@/router'
       right: 0;
     }
 
-    > .house {
+    > .house-container {
       position: absolute;
       height: 65vh;
       bottom: 50px;
+
+      > .tip {
+        position: absolute;
+        left: 62%;
+        top: 125px;
+      }
+
+      > .image {
+        height: 100%;
+      }
+
     }
   }
 }
@@ -89,16 +107,33 @@ import router from '@/router'
   margin-bottom: 6rem;
   height: 100%;
 
+  > * {
+    transition: opacity 0.6s ease-in-out;
+  }
+
   > .intro {
+    opacity: 0;
     max-width: 28%;
-    align-self: center
+    align-self: center;
   }
 
   > .button {
     @include button-default;
 
+    opacity: 0;
     align-self: baseline;
     margin-top: auto;
+    transition-delay: 0.8s;
+  }
+
+  &.-started {
+    > .intro {
+      opacity: 1;
+    }
+
+    > .button {
+      opacity: 1;
+    }
   }
 
 }
