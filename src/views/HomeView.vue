@@ -4,12 +4,12 @@
       <DateStatus :date="new Date()" class="status"></DateStatus>
 
       <div class="header-wrapper">
-        <h3 class="slogan">Make an impact on the future</h3>
+        <h3 class="slogan">Make an impact for future generations</h3>
         <h1 class="title">Impacture</h1>
       </div>
 
       <div class="house-container">
-        <ToolTip @action="isIntroStarted = true" class="tip" title="Haus" text="Das ist dein Haus!" action-text="Eigentlich nicht"></ToolTip>
+        <ToolTip @action="isIntroStarted = true" class="tip" text="Hey, Glückwunsch! Du bist erwachsen, zahlst Miete und wohnst jetzt in diesem Haus! Doch hast du dich jemals gefragt, wie deine brillianten Entscheidungen zukünftige Generationen beeinflussen können?" action-text="Eigentlich nicht"></ToolTip>
         <img src="/images/iso-house-demo.png" class="image"></img>
       </div>
 
@@ -85,16 +85,18 @@ const isIntroStarted = ref<boolean>(false)
   margin-top: 3rem;
 
   > .slogan {
+    @include text-medium;
+
     font-size: 2.5rem;
-    font-weight: 700;
     margin: 0;
   }
 
   > .title {
     @include text-xxl;
+    @include text-medium;
 
     text-transform: uppercase;
-    margin-top: 0.8rem;
+    margin-top: 0rem;
     margin-bottom: 0;
   }
 }
@@ -112,6 +114,8 @@ const isIntroStarted = ref<boolean>(false)
   }
 
   > .intro {
+    @include text-sm;
+
     opacity: 0;
     max-width: 28%;
     align-self: center;

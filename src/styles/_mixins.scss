@@ -6,39 +6,44 @@ They make it easy to avoid using non-semantic classes like .float-left, and to d
 // font mixins
 
 @mixin font-default {
-  font-family: 'Be Vietnam Pro', sans-serif;
+  font-family: 'Outfit', sans-serif;
   font-optical-sizing: auto;
+  font-weight: initial;
   font-style: normal;
+}
+
+@mixin text-xs {
+  font-size: 1rem;
+  font-style: normal;
+  line-height: normal;
 }
 
 @mixin text-sm {
-  color: white;
+  font-size: 1.25rem;
+  font-style: normal;
+  line-height: normal;
 }
 
 @mixin text-md {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-style: normal;
-  font-weight: 400;
   line-height: normal;
 }
 
 @mixin text-lg {
   font-size: 2rem;
   font-style: normal;
-  font-weight: 700;
   line-height: normal;
 }
 
 @mixin text-xl {
   font-size: 6rem;
-  font-weight: 400;
   font-style: normal;
-  line-height: normal;
+  line-height: 1.15;
 }
 
 @mixin text-xxl {
   font-size: 12.5rem;
-  font-weight: 400;
   font-style: normal;
   line-height: 1;
 }
@@ -48,8 +53,27 @@ They make it easy to avoid using non-semantic classes like .float-left, and to d
 
   font-size: 1.5rem;
   font-style: normal;
-  font-weight: 400;
   line-height: normal;
+}
+
+@mixin text-thin {
+  font-weight: 100;
+}
+
+@mixin text-light {
+  font-weight: 300;
+}
+
+@mixin text-regular {
+  font-weight: 400;
+}
+
+@mixin text-medium {
+  font-weight: 500;
+}
+
+@mixin text-semibold {
+  font-weight: 600;
 }
 
 // ui mixins

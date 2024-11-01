@@ -142,6 +142,7 @@ const emit = defineEmits<{
 
     > .question {
       @include text-lg;
+      @include text-semibold;
 
       width: 100%;
       text-align: center;
