@@ -78,6 +78,7 @@ They make it easy to avoid using non-semantic classes like .float-left, and to d
   @include border-lg;
   @include text-vote-button;
 
+  text-transform: uppercase;
   cursor: pointer;
   padding: 0.6rem 1rem;
   // padding-block: 0.6rem;
