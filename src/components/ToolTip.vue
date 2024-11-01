@@ -1,27 +1,43 @@
 <template>
   <div class="tooltip-comp">
     <div @click="toggleOpen()" class="dot"></div>
-    <div v-if="isOpen" class="content">
+    <div v-if="isOpen && hasContent" class="content">
       <h4 v-if="title" class="title">{{ title }}</h4>
       <p v-if="text" class="text">{{ text }}</p>
+      <button v-if="actionText" @click="triggerAction()" class="button">
+        {{ actionText }}
+      </button>
     </div>
+    <slot class="slot"></slot>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 const props = defineProps<{
   title?: string
   text?: string
   animate?: boolean
+  actionText?: string
 }>()
 
 const isOpen = ref<boolean>(false)
 
+const hasContent = computed(() => {
+  return props.title || props.text
+})
+
 function toggleOpen() {
   isOpen.value = !isOpen.value
 }
+
+function triggerAction() {
+  emit('action')
+  toggleOpen()
+}
+
+const emit = defineEmits(['action'])
 </script>
 
 <style lang="scss">
@@ -46,6 +62,7 @@ function toggleOpen() {
   > .content {
     @include border-md;
 
+    z-index: 10;
     position: absolute;
     width: 24rem;
     padding: 1rem;
@@ -56,6 +73,14 @@ function toggleOpen() {
 
     > * {
       margin: 0;
+    }
+
+    > .button {
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+      color: blue;
+      float: right;
     }
   }
 }
