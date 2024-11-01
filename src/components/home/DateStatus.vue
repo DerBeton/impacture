@@ -93,6 +93,7 @@ onUnmounted(() => {
   font-size: 1.8rem;
   position: relative;
   width: 260px; // otherwise date animation jumps
+  user-select: none;
 
   &::before,
   &::after {

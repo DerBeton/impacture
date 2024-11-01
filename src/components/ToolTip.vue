@@ -4,7 +4,11 @@
     <div v-if="isOpen && hasContent" class="content">
       <h4 v-if="title" class="title">{{ title }}</h4>
       <p v-if="text" class="text">{{ text }}</p>
-      <button v-if="actionText" @click="triggerAction()" class="button">
+      <button
+        v-if="actionText"
+        @click="triggerAction()"
+        class="button -arrow-r"
+      >
         {{ actionText }}
       </button>
     </div>
@@ -60,6 +64,7 @@ const emit = defineEmits(['action'])
   }
 
   > .content {
+    @include text-md;
     @include border-md;
 
     z-index: 10;
@@ -70,16 +75,17 @@ const emit = defineEmits(['action'])
     background-color: white;
     margin-top: 2.5rem;
     transform: translateY(50%);
+    user-select: none;
 
     > * {
       margin: 0;
     }
 
     > .button {
-      cursor: pointer;
-      background-color: transparent;
-      border: none;
-      color: blue;
+      @include button-default;
+      @include text-sm;
+
+      margin-top: 0.75rem;
       float: right;
     }
   }
