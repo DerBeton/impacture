@@ -64,7 +64,7 @@ const emit = defineEmits(['action'])
   }
 
   > .content {
-    @include text-md;
+    @include text-sm;
     @include border-md;
 
     z-index: 10;
@@ -83,7 +83,7 @@ const emit = defineEmits(['action'])
 
     > .button {
       @include button-default;
-      @include text-sm;
+      @include text-xs;
 
       margin-top: 0.75rem;
       float: right;

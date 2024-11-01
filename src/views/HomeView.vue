@@ -114,6 +114,8 @@ const isIntroStarted = ref<boolean>(false)
   }
 
   > .intro {
+    @include text-sm;
+
     opacity: 0;
     max-width: 28%;
     align-self: center;

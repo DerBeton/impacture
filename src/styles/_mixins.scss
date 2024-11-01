@@ -12,14 +12,20 @@ They make it easy to avoid using non-semantic classes like .float-left, and to d
   font-style: normal;
 }
 
-@mixin text-sm {
+@mixin text-xs {
   font-size: 1rem;
   font-style: normal;
   line-height: normal;
 }
 
-@mixin text-md {
+@mixin text-sm {
   font-size: 1.25rem;
+  font-style: normal;
+  line-height: normal;
+}
+
+@mixin text-md {
+  font-size: 1.5rem;
   font-style: normal;
   line-height: normal;
 }
@@ -33,7 +39,7 @@ They make it easy to avoid using non-semantic classes like .float-left, and to d
 @mixin text-xl {
   font-size: 6rem;
   font-style: normal;
-  line-height: normal;
+  line-height: 1.15;
 }
 
 @mixin text-xxl {

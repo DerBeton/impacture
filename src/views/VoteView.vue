@@ -139,6 +139,7 @@ watch(votingCompleted, () => {
 
   > .title {
     @include text-xl;
+    @include text-light;
 
     margin-block: 0;
   }
