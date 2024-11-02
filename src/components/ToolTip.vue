@@ -99,6 +99,20 @@ const emit = defineEmits(['action'])
     transform: translateY(50%);
     user-select: none;
 
+    &::before {
+      z-index: -1;
+      background-image: url('/icons/chat-tip.svg');
+      background-size: 40px 10px;
+      background-position: top;
+      height: 10px;
+      width: 40px;
+      left: 50%;
+      top: -9.5px;
+      transform: translateX(-50%);
+      content: '';
+      position: absolute;
+    }
+
     > * {
       margin: 0;
     }
