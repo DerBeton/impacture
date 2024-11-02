@@ -6,3 +6,7 @@ They are typically things that are tagged with !important. Use them very sparing
 ._unmargin {
   margin: 0 !important;
 }
+
+._level {
+  z-index: 1 !important;
+}

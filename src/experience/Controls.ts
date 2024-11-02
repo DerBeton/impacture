@@ -22,6 +22,21 @@ export default class Controls {
     )
 
     this.instance.enableDamping = true
+    this.enableLabelClick()
+  }
+
+  private enableLabelClick() {
+    this.labelRenderer.instance.domElement.addEventListener(
+      'mousedown',
+      event => {
+        if (event.target instanceof HTMLElement) {
+          if (event.target.classList.contains('-clickable')) {
+            event.stopPropagation()
+            event.target.click()
+          }
+        }
+      },
+    )
   }
 
   public update() {

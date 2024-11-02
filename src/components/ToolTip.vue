@@ -1,6 +1,6 @@
 <template>
-  <div class="tooltip-comp">
-    <div @click="toggleOpen()" class="dot"></div>
+  <div ref="toolTipCompElement" class="tooltip-comp">
+    <div @click="toggleOpen()" class="dot -clickable"></div>
     <div v-if="isOpen && hasContent" class="content">
       <h4 v-if="title" class="title">{{ title }}</h4>
       <p v-if="text" class="text">{{ text }}</p>
@@ -17,16 +17,19 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import type EventEmitter from '@/experience/utils/EventEmitter'
+import { computed, onMounted, onUnmounted, ref } from 'vue'
 
 const props = defineProps<{
   title?: string
   text?: string
   animate?: boolean
   actionText?: string
+  eventEmitter?: EventEmitter
 }>()
 
 const isOpen = ref<boolean>(false)
+const toolTipCompElement = ref<HTMLElement | null>(null)
 
 const hasContent = computed(() => {
   return props.title || props.text
@@ -41,6 +44,23 @@ function triggerAction() {
   toggleOpen()
 }
 
+// close all tooltips except clicked one
+function handleCloseAllTooltips(clickedToolTip: HTMLElement) {
+  if (clickedToolTip !== toolTipCompElement.value) {
+    isOpen.value = false
+  }
+}
+
+onMounted(() => {
+  props.eventEmitter?.on('closeAllTooltips', (clickedToolTip: HTMLElement) =>
+    handleCloseAllTooltips(clickedToolTip),
+  )
+})
+
+onUnmounted(() => {
+  props.eventEmitter?.off('closeAllTooltips')
+})
+
 const emit = defineEmits(['action'])
 </script>
 
@@ -53,7 +73,6 @@ const emit = defineEmits(['action'])
 
   > .dot {
     position: absolute;
-    z-index: 10;
     width: 1.3rem;
     height: 1.3rem;
     border-radius: 100%;
@@ -71,7 +90,6 @@ const emit = defineEmits(['action'])
     @include text-sm;
     @include border-md;
 
-    z-index: 10;
     position: absolute;
     width: 24rem;
     padding: 1rem;
