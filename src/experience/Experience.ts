@@ -89,5 +89,6 @@ export default class Experience {
     this.controls.update()
     this.renderer.update()
     this.labelRenderer.update()
+    this.world?.update()
   }
 }

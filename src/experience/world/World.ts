@@ -47,4 +47,8 @@ export default class World {
   private setVision<T extends VisionType>(VisionClass: new () => T): void {
     this.vision = new VisionClass()
   }
+
+  public update() {
+    this.vision?.update()
+  }
 }

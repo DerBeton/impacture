@@ -61,6 +61,9 @@ onUnmounted(() => {
   props.eventEmitter?.off('closeAllTooltips')
 })
 
+defineExpose({
+  toolTipCompElement,
+})
 const emit = defineEmits(['action'])
 </script>
 
@@ -70,6 +73,10 @@ const emit = defineEmits(['action'])
   display: flex;
   justify-content: center;
   align-items: center;
+
+  &.-hidden {
+    opacity: 0;
+  }
 
   > .dot {
     position: absolute;

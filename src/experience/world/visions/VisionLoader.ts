@@ -17,6 +17,7 @@ export default abstract class VisionLoader
   resources: Resources
   gltf?: GLTF
   rootObject?: THREE.Object3D
+  tooltips: Tooltip[]
 
   constructor(name: string) {
     super()
@@ -25,6 +26,7 @@ export default abstract class VisionLoader
     this.experience = new Experience()
     this.scene = this.experience.scene
     this.resources = this.experience.resources
+    this.tooltips = []
   }
 
   protected getObjectByName(name: string): THREE.Object3D | undefined {
@@ -53,6 +55,7 @@ export default abstract class VisionLoader
       )
 
       this.addTooltipClickListener(tooltip)
+      this.tooltips.push(tooltip)
     }
   }
 
@@ -85,4 +88,6 @@ export default abstract class VisionLoader
    * use it to change scale, add tooltips, ...
    */
   onReady(): void {}
+
+  public update(): void {}
 }
