@@ -6,12 +6,14 @@
       class="status"
     ></DateStatus>
     <FutureCanvas :votes="$route.params.id" class="canvas"></FutureCanvas>
+    <ChatBubble class="chat"></ChatBubble>
   </div>
 </template>
 
 <script setup lang="ts">
-import FutureCanvas from '@/components/FutureCanvas.vue'
+import FutureCanvas from '@/components/vision/FutureCanvas.vue'
 import DateStatus from '@/components/home/DateStatus.vue'
+import ChatBubble from '@/components/chat/ChatBubble.vue'
 </script>
 
 <style lang="scss" scoped>
@@ -29,6 +31,14 @@ import DateStatus from '@/components/home/DateStatus.vue'
   > .canvas {
     width: 100%;
     height: 100%;
+  }
+
+  > .chat {
+    position: absolute;
+    right: 1.75rem;
+    bottom: 1.75rem;
+    z-index: 100;
+    cursor: pointer;
   }
 }
 </style>
