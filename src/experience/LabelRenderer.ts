@@ -20,7 +20,9 @@ export default class LabelRenderer {
     this.instance = new CSS2DRenderer()
 
     this.instance.domElement.style.position = 'absolute'
-    this.instance.domElement.style.top = '0px'
+    this.instance.domElement.style.top = this.experience.canvas.offsetTop + 'px'
+    this.instance.domElement.style.left =
+      this.experience.canvas.offsetLeft + 'px'
 
     document.body.appendChild(this.instance.domElement)
 

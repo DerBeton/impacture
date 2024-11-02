@@ -1,23 +1,26 @@
 <template>
   <div class="home-view">
     <div class="container">
-      <WeatherStatus class="status"></WeatherStatus>
+      <DateStatus :date="new Date()" class="status"></DateStatus>
 
       <div class="header-wrapper">
-        <h3 class="slogan">Make an impact on the future</h3>
+        <h3 class="slogan">Make an impact for future generations</h3>
         <h1 class="title">Impacture</h1>
       </div>
 
-      <img src="/images/iso-house-demo.png" class="house"></img>
+      <div class="house-container">
+        <ToolTip @action="isIntroStarted = true" class="tip" text="Hey, Glückwunsch! Du bist erwachsen, zahlst Miete und wohnst jetzt in diesem Haus! Doch hast du dich jemals gefragt, wie deine brillianten Entscheidungen zukünftige Generationen beeinflussen können?" action-text="Eigentlich nicht"></ToolTip>
+        <img src="/images/iso-house-demo.png" class="image"></img>
+      </div>
 
-      <div class="content-wrapper">
+      <div class="content-wrapper" :class="{ '-started': isIntroStarted }">
         <p class="intro">
-          Hey Du. Die neusten Abstimmungen sind gerade eingetroffen. Nimm dir doch kurz Zeit, dich über die Themen zu informieren und gib deine Stimme ab. Jede Stimme zählt!
+          Du wurdest auserwählt. Triff Entscheidungen anhand vier Abstimmungen. Aber Achtung! Überlege gut was du wählst. Schliesslich setzt du damit den Grundstein für die nächsten Generationen.
           <br><br>
-          Klicke auf <b>Jetzt Abstimmen</b> um deinen Impact zu starten!
+          Starte die Simulation, um deinen Impact auf die Zukunft zu sehen.
         </p>
         <button @click="router.push('/vote')" class="button -arrow-r">
-        Jetzt Abstimmen
+        Jetzt Starten
       </button>
       </div>
     </div>
@@ -25,8 +28,13 @@
 </template>
 
 <script setup lang="ts">
-import WeatherStatus from '@/components/home/WeatherStatus.vue'
+import DateStatus from '@/components/home/DateStatus.vue';
+import ToolTip from '@/components/ToolTip.vue';
 import router from '@/router'
+import { ref } from 'vue';
+
+const isIntroStarted = ref<boolean>(false)
+
 </script>
 
 <style lang="scss" scoped>
@@ -40,19 +48,11 @@ import router from '@/router'
   align-items: center;
 
   > .container {
-    @include border-md;
+    @include default-ui;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative;
-    width: 100%;
-    height: 100%;
-    // background-color: var(--color-accent-main);
-    background: linear-gradient(129deg, #F8FFE8 25.5%, #DCF2A9 63.66%), linear-gradient(112deg, #E2F3FF 23.65%, #9CD4FF 86.89%);
-
-    /* background: linear-gradient(129deg, #dcf2a9 25.5%, #f8ffe8 63.66%),
-      linear-gradient(112deg, #e2f3ff 23.65%, #9cd4ff 86.89%); */
 
     > .status {
       position: absolute;
@@ -60,10 +60,21 @@ import router from '@/router'
       right: 0;
     }
 
-    > .house {
+    > .house-container {
       position: absolute;
       height: 65vh;
       bottom: 50px;
+
+      > .tip {
+        position: absolute;
+        left: 62%;
+        top: 125px;
+      }
+
+      > .image {
+        height: 100%;
+      }
+
     }
   }
 }
@@ -74,16 +85,18 @@ import router from '@/router'
   margin-top: 3rem;
 
   > .slogan {
+    @include text-medium;
+
     font-size: 2.5rem;
-    font-weight: 700;
     margin: 0;
   }
 
   > .title {
     @include text-xxl;
+    @include text-medium;
 
     text-transform: uppercase;
-    margin-top: 0.8rem;
+    margin-top: 0rem;
     margin-bottom: 0;
   }
 }
@@ -96,16 +109,35 @@ import router from '@/router'
   margin-bottom: 6rem;
   height: 100%;
 
+  > * {
+    transition: opacity 0.6s ease-in-out;
+  }
+
   > .intro {
+    @include text-sm;
+
+    opacity: 0;
     max-width: 28%;
-    align-self: center
+    align-self: center;
   }
 
   > .button {
     @include button-default;
 
+    opacity: 0;
     align-self: baseline;
     margin-top: auto;
+    transition-delay: 0.8s;
+  }
+
+  &.-started {
+    > .intro {
+      opacity: 1;
+    }
+
+    > .button {
+      opacity: 1;
+    }
   }
 
 }

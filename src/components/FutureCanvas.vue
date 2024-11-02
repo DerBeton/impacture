@@ -32,6 +32,8 @@ onMounted(() => {
   height: 100%;
 
   > .canvas {
+    @include border-md;
+
     width: 100%;
     height: 100%;
   }
