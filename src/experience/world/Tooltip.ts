@@ -4,6 +4,7 @@ import Experience from '../Experience'
 import TooltipVue from '@/components/ToolTip.vue'
 import Camera from '@/experience/Camera'
 import { createApp } from 'vue'
+import type EventEmitter from '../utils/EventEmitter'
 
 export default class Tooltip {
   experience: Experience
@@ -19,6 +20,7 @@ export default class Tooltip {
     title: string,
     text: string,
     offset?: THREE.Vector3,
+    eventEmitter?: EventEmitter,
   ) {
     this.experience = new Experience()
     this.camera = this.experience.camera
@@ -26,14 +28,15 @@ export default class Tooltip {
     this.model = model
     this.offset = offset ?? new THREE.Vector3(0, 0, 0)
 
-    this.create(title, text)
+    this.create(title, text, eventEmitter)
   }
 
-  private create(title: string, text: string) {
+  private create(title: string, text: string, eventEmitter?: EventEmitter) {
     const tooltipContainer = document.createElement('div')
+    tooltipContainer.classList.add('_level') // same z-index for all tooltips
 
     // create new tooltip from vue component
-    const tooltipApp = createApp(TooltipVue, { title, text })
+    const tooltipApp = createApp(TooltipVue, { title, text, eventEmitter })
     tooltipApp.mount(tooltipContainer)
 
     this.domElement = tooltipContainer
@@ -44,11 +47,11 @@ export default class Tooltip {
     // add tooltip to model (to mirror position)
     this.model.add(this.objectCSS)
 
-    this.update()
+    // this.update()
   }
 
   public update() {
-    window.requestAnimationFrame(this.update)
+    // window.requestAnimationFrame(this.update)
   }
 
   private checkRaycast() {

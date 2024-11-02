@@ -5,8 +5,12 @@ import type { ResourceItem } from '@/experience/utils/Resources'
 import type { GLTF } from 'three/examples/jsm/Addons.js'
 import Tooltip from '../Tooltip'
 import type VisionType from './VisionType'
+import EventEmitter from '@/experience/utils/EventEmitter'
 
-export default abstract class VisionLoader implements VisionType {
+export default abstract class VisionLoader
+  extends EventEmitter
+  implements VisionType
+{
   resourceName: string = ''
   experience: Experience
   scene: THREE.Scene
@@ -15,6 +19,8 @@ export default abstract class VisionLoader implements VisionType {
   rootObject?: THREE.Object3D
 
   constructor(name: string) {
+    super()
+
     this.resourceName = name
     this.experience = new Experience()
     this.scene = this.experience.scene
@@ -38,8 +44,29 @@ export default abstract class VisionLoader implements VisionType {
     text: string,
   ) {
     if (obj instanceof THREE.Object3D) {
-      const tooltip = new Tooltip(obj, title, text, new THREE.Vector3(0, 0, 0))
+      const tooltip = new Tooltip(
+        obj,
+        title,
+        text,
+        new THREE.Vector3(0, 0, 0),
+        this,
+      )
+
+      this.addTooltipClickListener(tooltip)
     }
+  }
+
+  private addTooltipClickListener(tooltip: Tooltip) {
+    tooltip.domElement?.addEventListener('click', () => {
+      this.trigger('closeAllTooltips', [
+        this.getToolTipCompElement(tooltip.domElement),
+      ])
+    })
+  }
+
+  // get reference to dom element of tooltip component
+  private getToolTipCompElement(parent?: HTMLElement) {
+    return parent?.getElementsByClassName('tooltip-comp')[0]
   }
 
   private setModel() {
