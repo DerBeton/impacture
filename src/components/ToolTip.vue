@@ -63,6 +63,10 @@ const emit = defineEmits(['action'])
     animation: pulse 1s ease-in-out infinite alternate;
   }
 
+  &:hover {
+    box-shadow: 0px 0px 12px 3px rgba(255, 255, 255, 1);
+  }
+
   > .content {
     @include text-sm;
     @include border-md;
