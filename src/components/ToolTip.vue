@@ -1,6 +1,6 @@
 <template>
   <div class="tooltip-comp">
-    <div @click="toggleOpen()" class="dot"></div>
+    <div @click="toggleOpen()" class="dot -clickable"></div>
     <div v-if="isOpen && hasContent" class="content">
       <h4 v-if="title" class="title">{{ title }}</h4>
       <p v-if="text" class="text">{{ text }}</p>
