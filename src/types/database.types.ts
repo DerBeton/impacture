@@ -11,6 +11,7 @@ export type Database = {
           is_hidden: boolean
           like_count: number
           message: string
+          vision_id: string | null
         }
         Insert: {
           author_identifier?: string | null
@@ -21,6 +22,7 @@ export type Database = {
           is_hidden?: boolean
           like_count?: number
           message?: string
+          vision_id?: string | null
         }
         Update: {
           author_identifier?: string | null
@@ -31,6 +33,7 @@ export type Database = {
           is_hidden?: boolean
           like_count?: number
           message?: string
+          vision_id?: string | null
         }
         Relationships: []
       }
