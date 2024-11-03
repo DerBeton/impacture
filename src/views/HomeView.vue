@@ -15,6 +15,7 @@
 
       <div class="content-wrapper" :class="{ '-started': isIntroStarted }">
         <p class="intro">
+          <p class="caption">The future simulation game</p>
           Du wurdest auserwählt. Triff Entscheidungen anhand vier Abstimmungen. Aber Achtung! Überlege gut was du wählst. Schliesslich setzt du damit den Grundstein für die nächsten Generationen.
           <br><br>
           Starte die Simulation, um deinen Impact auf die Zukunft zu sehen.
@@ -119,6 +120,11 @@ const isIntroStarted = ref<boolean>(false)
     opacity: 0;
     max-width: 28%;
     align-self: center;
+
+    > .caption {
+      @include text-semibold;
+      margin-bottom: 1rem;
+    }
   }
 
   > .button {
