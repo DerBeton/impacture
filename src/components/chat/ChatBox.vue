@@ -96,6 +96,7 @@ async function getComments() {
     .select()
     .eq('is_hidden', false)
     .eq('vision_id', props.visionString)
+    .order('created_at', { ascending: true })
   if (error) {
     console.warn('Error while fetching comments', error)
   } else {

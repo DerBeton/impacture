@@ -7,6 +7,13 @@
     ></DateStatus>
     <FutureCanvas :vision-string="visionRoute" class="canvas"></FutureCanvas>
     <ChatBubble @toggle="toggleChat()" class="bubble"></ChatBubble>
+    <ChatMessage
+      v-if="comment[0]?.message"
+      class="comment"
+      :class="{ '-visible': isCommentVisible }"
+      type="own"
+      :text="comment[0].message"
+    ></ChatMessage>
     <ChatBox
       @toggle="toggleChat()"
       v-if="isChatOpen"
@@ -23,16 +30,51 @@ import ChatBubble from '@/components/chat/ChatBubble.vue'
 import ChatBox from '@/components/chat/ChatBox.vue'
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
+import ChatMessage from '@/components/chat/ChatMessage.vue'
+import { supabase } from '@/lib/supabaseClient'
+import type { Database } from '@/types/database.types'
 
 const route = useRoute()
 const isChatOpen = ref<boolean>(false)
 const visionRoute = ref<string>(
   Array.isArray(route.params.id) ? route.params.id[0] : route.params.id,
 )
+const isCommentVisible = ref<boolean>(false)
 
 function toggleChat() {
+  if (isCommentVisible.value) {
+    isCommentVisible.value = false
+  }
   isChatOpen.value = !isChatOpen.value
 }
+
+const comment = ref<Database['public']['Tables']['comments']['Row'][]>([])
+async function getLastComment() {
+  const { data, error } = await supabase
+    .from('comments')
+    .select()
+    .eq('is_hidden', false)
+    .eq('vision_id', visionRoute.value)
+    .order('created_at', { ascending: false })
+    .limit(1)
+  if (error) {
+    console.warn('Error while fetching comments', error)
+  } else {
+    comment.value = data || []
+  }
+}
+
+// make comment visible after amount of miliseconds
+function enableCommentAfter(timeMs: number) {
+  setTimeout(() => {
+    isCommentVisible.value = true
+  }, timeMs)
+}
+
+onMounted(() => {
+  getLastComment()
+  enableCommentAfter(10000)
+})
 </script>
 
 <style lang="scss" scoped>
@@ -50,6 +92,20 @@ function toggleChat() {
   > .canvas {
     width: 100%;
     height: 100%;
+  }
+
+  > .comment {
+    position: absolute;
+    right: 7.5rem;
+    bottom: calc(1.75rem + 1.5rem);
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s ease-in-out;
+
+    &.-visible {
+      opacity: 1;
+    }
   }
 
   > .bubble {
