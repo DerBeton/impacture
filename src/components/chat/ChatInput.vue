@@ -6,12 +6,23 @@
       rows="1"
       placeholder="Teile deine Stimme mit der Community..."
     ></textarea>
-    <img class="send" src="/icons/send.svg" alt="Send icon" />
+    <img
+      @click="sendComment()"
+      class="send"
+      src="/icons/send.svg"
+      alt="Send icon"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
 const chatText = defineModel('chatText', { type: String })
+
+function sendComment() {
+  emit('send')
+}
+
+const emit = defineEmits(['send'])
 </script>
 
 <style lang="scss">

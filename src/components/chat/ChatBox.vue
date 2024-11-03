@@ -30,59 +30,39 @@
         text="Würdest du hier leben wollen?"
       ></ChatMessage>
       <ChatMessage
+        v-for="comment in myComments"
         type="own"
-        text="Ich könnte mir schon vorstellen hier zu leben. Die Umgebung sieht sehr ruhig aus und es gibt genügend Umschwung ums Haus."
-      ></ChatMessage>
-      <ChatMessage type="own" text="Ja."></ChatMessage>
-      <ChatMessage
-        v-if="chatText.length > 0"
-        type="own"
-        :text="chatText"
+        :text="comment.message"
       ></ChatMessage>
     </div>
     <div v-if="activeTabIndex === 1" class="discover">
       <ChatMessage
-        type="other"
-        text="Mir gefällt in dieser Zukunft die Idee der Patchwork-Elemente, welche die wiederverwendung von Ressourcen aufzeigt."
-      ></ChatMessage>
-      <ChatMessage
-        type="other"
-        text="Mir gefällt in dieser Zukunft die Idee der Patchwork-Elemente, welche die wiederverwendung von Ressourcen aufzeigt."
-      ></ChatMessage>
-      <ChatMessage
-        type="other"
-        text="Mir gefällt in dieser Zukunft die Idee der Patchwork-Elemente, welche die wiederverwendung von Ressourcen aufzeigt."
-      ></ChatMessage>
-      <ChatMessage
-        type="other"
-        text="Mir gefällt in dieser Zukunft die Idee der Patchwork-Elemente, welche die wiederverwendung von Ressourcen aufzeigt."
-      ></ChatMessage>
-      <ChatMessage
-        type="other"
-        text="Mir gefällt in dieser Zukunft die Idee der Patchwork-Elemente, welche die wiederverwendung von Ressourcen aufzeigt."
-      ></ChatMessage>
-      <ChatMessage
-        type="other"
-        text="Mir gefällt in dieser Zukunft die Idee der Patchwork-Elemente, welche die wiederverwendung von Ressourcen aufzeigt."
-      ></ChatMessage>
-      <ChatMessage
-        type="other"
-        text="Mir gefällt in dieser Zukunft die Idee der Patchwork-Elemente, welche die wiederverwendung von Ressourcen aufzeigt."
+        v-for="comment in comments"
+        :text="comment.message"
+        :type="getType(comment.author_identifier)"
       ></ChatMessage>
     </div>
     <div v-if="activeTabIndex === 0" class="input">
-      <ChatInput v-model:chatText="chatText"></ChatInput>
+      <ChatInput
+        @send="() => sendComment(chatText)"
+        v-model:chatText="chatText"
+      ></ChatInput>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import ChatInput from './ChatInput.vue'
 import ChatMessage from './ChatMessage.vue'
 import SingleTab from './SingleTab.vue'
+import { supabase } from '@/lib/supabaseClient'
+import type { Database } from '@/types/database.types'
+import getOrCreateUUID from '@/lib/identifier'
 
 const chatText = ref<string>('')
+const myComments = ref<Database['public']['Tables']['comments']['Row'][]>([])
+const userId = ref<string>(getOrCreateUUID())
 
 /**
  * Tabbar with Tabs
@@ -100,6 +80,49 @@ const tabs = [
 ]
 
 const emit = defineEmits(['toggle'])
+
+/**
+ * Remote comments
+ */
+const comments = ref<Database['public']['Tables']['comments']['Row'][]>([])
+
+async function getComments() {
+  const { data, error } = await supabase
+    .from('comments')
+    .select()
+    .eq('is_hidden', false)
+  if (error) {
+    console.warn('Error while fetching comments', error)
+  } else {
+    comments.value = data || []
+  }
+}
+
+async function sendComment(message: string) {
+  const { data, error } = await supabase
+    .from('comments')
+    .insert({
+      message: message,
+      author_identifier: userId.value,
+    })
+    .eq('id', 1)
+    .select()
+  if (error) {
+    console.warn('There was a problem while sending the comment', error)
+  } else {
+    myComments.value.push(data[0])
+    comments.value.push(data[0])
+    chatText.value = ''
+  }
+}
+
+function getType(identifier: string | null) {
+  return identifier == userId.value ? 'own' : 'other'
+}
+
+onMounted(() => {
+  getComments()
+})
 </script>
 
 <style lang="scss">
