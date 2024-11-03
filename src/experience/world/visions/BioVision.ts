@@ -32,37 +32,37 @@ export default class BioVision extends VisionLoader {
     this.addToolTip(
       this.getObjectByName('Antenna'),
       'Stromnetz und Kommunikation',
-      'Die Energie wird von jedem Wohnquartier selbst produziert. Der Wirtschaftskollaps hat dazu geführt, dass alle aufeinander acht geben, da viele in die Armut getrieben wurden. Deshalb wird auch der Strom mit den Nachbarn geteilt. So erhöht sich ausserdem die Versorgungssicherheit der einzelnen Haushalte.',
+      'In dieser neuen Gesellschaft achtet jeder auf den anderen. Große Konzerne gibt es nicht mehr, stattdessen organisieren sich die Menschen in selbstverwalteten Gemeinschaften, die gemeinsam und nachhaltig für das Gemeinwohl arbeiten. Häuser sind nicht nur private Rückzugsorte, sondern dienen dem Allgemeinwohl. Das Dach ist mit einem Stromnetz verbunden, das auf erneuerbaren Energien basiert und die Häuser untereinander vernetzt. So kann bei Energieengpässen an einem Hausstand sofort unterstützt werden. Nachhaltigkeit, Transparenz und Verantwortung stehen im Mittelpunkt – jedes Haus ist ein aktiver Teil des Stromnetzwerks der Gemeinschaft und trägt zur Stabilität des gesamten Viertels bei.',
     )
     this.addToolTip(
       this.getObjectByName('Patchworkblau'),
       'Patchwork',
-      'Da die Erzeugung von klimaschädlichen Strom verboten wurde, musste auf erneuerbare Energien umgestiegen werden. Der nachhaltige Umgang mit Ressourcen wurde plötzlich sehr wichtig. Rohstoffe stehen nicht mehr unerschöpflich zur Verfügung. Deshalb haben die Bewohner*innen angefangen, alle Baustoffe aus Wastefields wiederzuverwenden, um ihre Gebäude und Geräte zu reparieren. Das Wissen wird untereinander getauscht und Pläne zu Maschinen stehen frei zugänglich (Open Source) zur Verfügung.',
+      'Da kaum noch neue Materialien produziert werden, weil sie zu viel Abfall erzeugen, entstand ein neuer Umgang mit Reparaturen. Schäden treten natürlich trotzdem auf, doch zum Glück kann der Abfall der vergangenen Generationen von den sogenannten „Waste-Fields“ wiederverwendet werden, um Dinge zu reparieren. Das führt zu einem kunterbunten Mix an Farben und Materialien und fördert die Kreativität – denn jeder Patch erzählt eine Geschichte und trägt zum einzigartigen Erscheinungsbild jedes Haushalts bei.',
     )
     this.addToolTip(
       this.getObjectByName('Cube039'),
       'Vertical Farming',
-      'Die Wirtschaftskrise hat in der Gesellschaft zu einem umdenken geführt. Es wurde Vielen bewusst, dass wir abhängig von Grosskonzernen gewesen sind und alleine nicht mehr weit kommen würden. Deshalb begannen die Leute ihre eigene Nahrung anzubauen und mit Communities zu teilen. Für den Anbau wird jeder verfügbare Platz verwendet.',
+      'Um genügend Platz für Salat anzubauen, haben sich die Bewohner dieses Hauses für Vertical Gardening entschieden. Die Fassade ist mit Salat bepflanzt, und das Konzept der „grünen Häuser“ hat sich längst als Standard durchgesetzt. Auch die Nachbarn tragen dazu bei: Rechts blühen farbenprächtige Blumen, die nicht nur das Haus verschönern, sondern auch ein Paradies für Bienen schaffen. Es ist beeindruckend, wie viel Salat auf nur einer vertikalen Fläche wächst – eine Lösung, die Platz spart und gleichzeitig der Natur Raum bietet.',
     )
     this.addToolTip(
       this.getObjectByName('biogasgrundriss'),
       'Biogas',
-      'Eine Art der Stromproduktion sind Biogasanlagen. Dort werden kompostierbare Dinge wie alte Lebensmittel und Abfälle aus dem Garten in sauberen Strom umgewandelt. Selbst das eigene Abwassersystem ist dort angeschlossen. So kann auch bei schlechtem Wetter Strom produziert werden.',
+      'Ein kleines, unscheinbares Gerät im Garten oder in einem kleinen Schuppen: das Biogas-Modul. Dieses kompakte Gerät kann aus organischen Abfällen – etwa Gemüse- und Obstschalen oder anderen biologischen Abfällen aus dem Haushalt – Biogas erzeugen. Dieses Gas wird für das Kochen und für die Heizung verwendet. Einige weiterentwickelte Modelle verfügen sogar über eine Funktion zur Wasseraufbereitung und liefern sauberes Trinkwasser, das aus den Abfällen gewonnen wird. Jedes Haus trägt somit aktiv zur Energieerzeugung bei und reduziert Abfall, was die Eigenversorgung und Nachhaltigkeit in der Nachbarschaft unterstützt.',
     )
     this.addToolTip(
       this.getObjectByName('Solarpanel'),
       'Solaranlagen',
-      'Die am weitesten verbreitete Art um Strom zu gewinnen, ist die Verwendung von Solarmodulen. Durch Jahzehntelanger Forschung in diesem Bereich, liegt der Wirkungsgrad mittlerweile bei knapp 60%. Sie sind deshalb an sehr vielen Orten anzutreffen.',
+      '„Weg von Atomkraftwerken, hin zur Natur“ lautet das Motto der neuen Ära. Strom wird fast ausschließlich durch Solarenergie gewonnen, aber dieser reicht nicht für alle Bedürfnisse. Der technologische Fortschritt ist dadurch ins Stocken geraten, und Stromfresser wie AGI (Artificial General Intelligence) sind ohne größere Stromquellen undenkbar geworden. Diese Entwicklung wird jedoch kaum bedauert, da die Generationen zuvor den Wunsch nach solchen Technologien ohnehin ablehnten. Stattdessen setzt die Gesellschaft auf minimalistischen Komfort und nachhaltige, naturfreundliche Lösungen.',
     )
     this.addToolTip(
       this.getObjectByName('TradingHouse'),
       'Tauschbox',
-      '"Sharing is Caring" lautet das Motto. Deshalb hat Jeder und Jede eine Art Schrank vor dem Haus. Darin werden nicht mehr benötigte Gegenstände, oder selbst angebaute Lebensmittel zur Verfügung gestellt. Wer etwas benötigt, nimmt sich etwas daraus und legt einen Gegenstand zum Tausch zurück.',
+      '"Sharing is Caring" lautet das Motto. Nach der Wirtschaftskrise und dem Konsumcrash hörten die Menschen auf, ständig neue Dinge zu kaufen. Es wird kaum noch etwas neu produziert. Stattdessen tauschen die Menschen, um an das zu gelangen, was sie benötigen. Dinge, die nicht mehr gebraucht werden, kommen in die Tauschbox – und innerhalb von Tagen finden sie ein neues Zuhause. Auch für den Lebensmitteltausch mit den Nachbarn ist er sehr praktisch und sorgt dafür, dass Lebensmittel im Viertel nicht verschwendet werden.',
     )
     this.addToolTip(
       this.getObjectByName('Gardenbedstone1'),
       'Gartenbeet',
-      'In diesem Beet wachsen aktuell Kürbisse. Da die Familie, die hier lebt, nicht alle für sich selbst benötigt, wird ein Teil davon über die Tauschbox weitergegeben. Es findet sich bestimmt Jemand, der ein paar Karotten zum Tauschen hat.',
+      'Das ist der Gemüse- und Obstgarten des Hauses. Die Nachbarschaft hat sich darauf geeinigt, dass hier Kürbisse, Äpfel und Salat angebaut werden. Zusammen mit dem restlichen Quartier kann so der Nahrungsbedarf aller Bewohner gedeckt werden. Auf diese Weise muss keine Nahrung importiert werden, und die Gemeinschaft kann autark leben.',
     )
   }
 }
