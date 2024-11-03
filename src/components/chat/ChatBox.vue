@@ -60,6 +60,10 @@ import { supabase } from '@/lib/supabaseClient'
 import type { Database } from '@/types/database.types'
 import getOrCreateUUID from '@/lib/identifier'
 
+const props = defineProps<{
+  visionString: string
+}>()
+
 const chatText = ref<string>('')
 const myComments = ref<Database['public']['Tables']['comments']['Row'][]>([])
 const userId = ref<string>(getOrCreateUUID())
@@ -91,6 +95,7 @@ async function getComments() {
     .from('comments')
     .select()
     .eq('is_hidden', false)
+    .eq('vision_id', props.visionString)
   if (error) {
     console.warn('Error while fetching comments', error)
   } else {
@@ -104,6 +109,7 @@ async function sendComment(message: string) {
     .insert({
       message: message,
       author_identifier: userId.value,
+      vision_id: props.visionString,
     })
     .eq('id', 1)
     .select()
@@ -122,6 +128,7 @@ function getType(identifier: string | null) {
 
 onMounted(() => {
   getComments()
+  console.log(props.visionString)
 })
 </script>
 

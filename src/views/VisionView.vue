@@ -5,9 +5,14 @@
       :is-animated="true"
       class="status"
     ></DateStatus>
-    <FutureCanvas :votes="$route.params.id" class="canvas"></FutureCanvas>
+    <FutureCanvas :vision-string="visionRoute" class="canvas"></FutureCanvas>
     <ChatBubble @toggle="toggleChat()" class="bubble"></ChatBubble>
-    <ChatBox @toggle="toggleChat()" v-if="isChatOpen" class="box"></ChatBox>
+    <ChatBox
+      @toggle="toggleChat()"
+      v-if="isChatOpen"
+      :vision-string="visionRoute"
+      class="box"
+    ></ChatBox>
   </div>
 </template>
 
@@ -16,9 +21,14 @@ import FutureCanvas from '@/components/vision/FutureCanvas.vue'
 import DateStatus from '@/components/home/DateStatus.vue'
 import ChatBubble from '@/components/chat/ChatBubble.vue'
 import ChatBox from '@/components/chat/ChatBox.vue'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
+import { useRoute } from 'vue-router'
 
+const route = useRoute()
 const isChatOpen = ref<boolean>(false)
+const visionRoute = ref<string>(
+  Array.isArray(route.params.id) ? route.params.id[0] : route.params.id,
+)
 
 function toggleChat() {
   isChatOpen.value = !isChatOpen.value
