@@ -90,8 +90,14 @@ const emit = defineEmits(['action'])
     @include text-sm;
     @include border-md;
 
+    > .title {
+      @include text-semibold;
+
+      margin-bottom: 0.5rem;
+    }
+
     position: absolute;
-    width: 24rem;
+    width: 30rem;
     padding: 1rem;
     border: 1px solid black;
     background-color: white;
