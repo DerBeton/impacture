@@ -1,10 +1,12 @@
 <template>
-  <div class="chat-bubble">
+  <div @click="emit('toggle')" class="chat-bubble">
     <img class="icon" src="/icons/message-bubble.svg" alt="Comment" />
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const emit = defineEmits(['toggle'])
+</script>
 
 <style lang="scss">
 .chat-bubble {
