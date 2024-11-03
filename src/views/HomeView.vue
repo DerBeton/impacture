@@ -67,20 +67,21 @@ const isIntroStarted = ref<boolean>(false)
       display: flex;
       width: 100%;
       bottom: 0;
-      clip-path: inset(0);
-      overflow: hidden;
+      // clip-path: inset(0);
+      // overflow: hidden;
 
       > .tip {
         z-index: 10;
         position: absolute;
-        left: 56%;
+        left: 42%;
         top: 43%;
       }
 
       > .image {
-        width: 100%;
+        width: 85%;
+        margin: 0 auto;
         height: auto;
-        transform: translateY(100px);
+        transform: translateY(12px);
       }
 
     }
@@ -114,7 +115,7 @@ const isIntroStarted = ref<boolean>(false)
   justify-content: space-between;
   margin-inline: 4.5rem;
   // margin-top: 3rem;
-  margin-bottom: 6rem;
+  margin-bottom: 4rem;
   height: 100%;
 
   > * {
