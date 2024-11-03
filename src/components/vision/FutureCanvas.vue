@@ -8,11 +8,16 @@
 import Experience from '@/experience/Experience'
 import { onMounted, ref } from 'vue'
 
+const props = defineProps<{
+  visionString: string
+}>()
+
 const canvasElement = ref<HTMLCanvasElement | null>()
 
 onMounted(() => {
   if (canvasElement.value) {
     const experience = new Experience(canvasElement.value)
+    experience.setFuture(props.visionString)
   }
 })
 </script>
@@ -23,6 +28,8 @@ onMounted(() => {
   height: 100%;
 
   > .canvas {
+    @include border-md;
+
     width: 100%;
     height: 100%;
   }

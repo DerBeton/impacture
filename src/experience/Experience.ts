@@ -6,6 +6,10 @@ import Time from './utils/Time'
 import World from './world/World'
 import Resources, { type ResourceItem } from './utils/Resources'
 import sources from './sources'
+import LabelRenderer from './LabelRenderer'
+import Controls from './Controls'
+import BioVision from './world/visions/BioVision'
+import DomeVision from './world/visions/DomeVision'
 
 let instance: Experience | null = null
 
@@ -17,8 +21,11 @@ export default class Experience {
   scene!: THREE.Scene
   time!: Time
   renderer!: Renderer
-  world!: World
+  labelRenderer!: LabelRenderer
+  controls!: Controls
+  world?: World
   resources!: Resources
+  selectedFuture?: string
 
   public constructor(canvasElement?: HTMLCanvasElement) {
     if (instance) {
@@ -37,11 +44,28 @@ export default class Experience {
     this.scene = new THREE.Scene()
     this.camera = new Camera()
     this.renderer = new Renderer()
-    this.resources = new Resources(sources)
-    this.world = new World()
+    this.labelRenderer = new LabelRenderer()
+    this.controls = new Controls()
+    this.resources = new Resources(null)
+    this.selectedFuture = ''
 
     // Events
     this.registerEventListeners()
+  }
+
+  public setFuture(future: string) {
+    this.selectedFuture = future
+
+    switch (future) {
+      case '0010':
+        this.world = new World(BioVision)
+        break
+      case '1001':
+        this.world = new World(DomeVision)
+        break
+      default:
+        console.log("future doesn't exist")
+    }
   }
 
   private registerEventListeners() {
@@ -57,10 +81,13 @@ export default class Experience {
   private resize() {
     this.camera.resize()
     this.renderer.resize()
+    this.labelRenderer.resize()
   }
 
   private update() {
     this.camera.update()
+    this.controls.update()
     this.renderer.update()
+    this.labelRenderer.update()
   }
 }

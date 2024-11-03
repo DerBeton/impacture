@@ -1,12 +1,11 @@
 <template>
   <div class="app">
-    <HomeView></HomeView>
+    <RouterView></RouterView>
   </div>
 </template>
 
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import HomeView from './views/HomeView.vue'
 </script>
 
 <style lang="scss">

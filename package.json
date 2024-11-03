@@ -1,5 +1,5 @@
 {
-  "name": "future-shape",
+  "name": "impacture",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -14,10 +14,11 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "vue": "^3.5.11",
-    "vue-router": "^4.4.5",
+    "@supabase/supabase-js": "^2.46.1",
     "@vueuse/core": "^11.1.0",
-    "three": "^0.169.0"
+    "three": "^0.169.0",
+    "vue": "^3.5.11",
+    "vue-router": "^4.4.5"
   },
   "devDependencies": {
     "@tsconfig/node20": "^20.1.4",
@@ -36,6 +37,7 @@
     "npm-run-all2": "^6.2.3",
     "prettier": "^3.3.3",
     "sass": "^1.79.5",
+    "supabase": "^1.207.9",
     "typescript": "~5.5.4",
     "vite": "^5.4.8",
     "vitest": "^2.1.2",
