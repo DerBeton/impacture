@@ -77,7 +77,7 @@ function enableCommentAfter(timeMs: number) {
 
 onMounted(() => {
   getLastComment()
-  enableCommentAfter(100)
+  enableCommentAfter(10000)
 })
 </script>
 
