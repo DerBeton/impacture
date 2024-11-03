@@ -18,3 +18,15 @@ body {
 * {
   box-sizing: border-box;
 }
+
+input,
+textarea {
+  @include font-default;
+  @include text-xs;
+}
+
+input::placeholder,
+textarea::placeholder {
+  @include font-default;
+  @include text-xs;
+}

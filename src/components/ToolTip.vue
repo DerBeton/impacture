@@ -4,10 +4,16 @@
     <div v-if="isOpen && hasContent" class="content">
       <h4 v-if="title" class="title">{{ title }}</h4>
       <p v-if="text" class="text">{{ text }}</p>
+      <img
+        @click="toggleOpen()"
+        src="/icons/close.svg"
+        alt="Close icon"
+        class="close -clickable"
+      />
       <button
         v-if="actionText"
         @click="triggerAction()"
-        class="button -arrow-r"
+        class="button -arrow-r -clickable"
       >
         {{ actionText }}
       </button>
@@ -105,8 +111,31 @@ const emit = defineEmits(['action'])
     transform: translateY(50%);
     user-select: none;
 
+    &::before {
+      z-index: -1;
+      background-image: url('/icons/chat-tip.svg');
+      background-size: 40px 10px;
+      background-position: top;
+      height: 10px;
+      width: 40px;
+      left: 50%;
+      top: -9.5px;
+      transform: translateX(-50%);
+      content: '';
+      position: absolute;
+    }
+
     > * {
       margin: 0;
+    }
+
+    > .close {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      width: 2.25rem;
+      height: 2.25rem;
+      cursor: pointer;
     }
 
     > .button {
