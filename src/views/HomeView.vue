@@ -10,7 +10,7 @@
 
       <div class="house-container">
         <ToolTip @action="isIntroStarted = true" class="tip" text="Hey, Glückwunsch! Du bist erwachsen, zahlst Miete und wohnst jetzt in diesem Haus! Doch hast du dich jemals gefragt, wie deine brillianten Entscheidungen zukünftige Generationen beeinflussen können?" action-text="Eigentlich nicht"></ToolTip>
-        <img src="/images/iso-house-demo.png" class="image"></img>
+        <img src="/images/iso-house.png" class="image"></img>
       </div>
 
       <div class="content-wrapper" :class="{ '-started': isIntroStarted }">
@@ -61,18 +61,26 @@ const isIntroStarted = ref<boolean>(false)
     }
 
     > .house-container {
+      @include border-md;
+
       position: absolute;
-      height: 65vh;
-      bottom: 50px;
+      display: flex;
+      width: 100%;
+      bottom: 0;
+      clip-path: inset(0);
+      overflow: hidden;
 
       > .tip {
+        z-index: 10;
         position: absolute;
-        left: 62%;
-        top: 125px;
+        left: 56%;
+        top: 43%;
       }
 
       > .image {
-        height: 100%;
+        width: 100%;
+        height: auto;
+        transform: translateY(100px);
       }
 
     }
@@ -131,6 +139,8 @@ const isIntroStarted = ref<boolean>(false)
   }
 
   &.-started {
+    z-index: 10;
+
     > .intro {
       opacity: 1;
     }
