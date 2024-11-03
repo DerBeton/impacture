@@ -12,7 +12,7 @@
       class="comment"
       :class="{ '-visible': isCommentVisible }"
       type="own"
-      :text="comment[0].message"
+      :text="cutTextLenght(comment[0].message, 40)"
     ></ChatMessage>
     <ChatBox
       @toggle="toggleChat()"
@@ -48,6 +48,10 @@ function toggleChat() {
   isChatOpen.value = !isChatOpen.value
 }
 
+function cutTextLenght(text: string, length: number) {
+  return text.length <= length ? text : text.substring(0, length) + '...'
+}
+
 const comment = ref<Database['public']['Tables']['comments']['Row'][]>([])
 async function getLastComment() {
   const { data, error } = await supabase
@@ -73,7 +77,7 @@ function enableCommentAfter(timeMs: number) {
 
 onMounted(() => {
   getLastComment()
-  enableCommentAfter(10000)
+  enableCommentAfter(100)
 })
 </script>
 
