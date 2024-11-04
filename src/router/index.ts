@@ -21,6 +21,7 @@ const router = createRouter({
       path: '/vision/:id',
       name: 'vision',
       component: VisionView,
+      props: true,
     },
     // {
     //   path: '/about',
