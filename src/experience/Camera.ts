@@ -62,7 +62,7 @@ export default class Camera {
   public update() {
     if (this.controls.enableDamping) {
       this.controls.update()
-      console.log(this.instance.position)
+      // console.log(this.instance.position)
     }
   }
 }
