@@ -10,3 +10,8 @@ They are typically things that are tagged with !important. Use them very sparing
 ._level {
   z-index: 1 !important;
 }
+
+// bring open tooltip to front
+._level-front {
+  z-index: 2 !important;
+}

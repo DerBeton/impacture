@@ -129,7 +129,6 @@ function getType(identifier: string | null) {
 
 onMounted(() => {
   getComments()
-  console.log(props.visionString)
 })
 </script>
 

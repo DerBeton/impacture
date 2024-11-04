@@ -2,7 +2,7 @@
   <div ref="toolTipCompElement" class="tooltip-comp">
     <div @click="toggleOpen()" class="dot -clickable"></div>
     <div v-if="isOpen && hasContent" class="content">
-      <h4 v-if="title" class="title">{{ title }}</h4>
+      <h4 class="title">{{ title ?? '&nbsp;' }}</h4>
       <p v-if="text" class="text">{{ text }}</p>
       <img
         @click="toggleOpen()"
@@ -24,7 +24,7 @@
 
 <script setup lang="ts">
 import type EventEmitter from '@/experience/utils/EventEmitter'
-import { computed, onMounted, onUnmounted, ref } from 'vue'
+import { computed, onMounted, onUnmounted, ref, watchEffect } from 'vue'
 
 const props = defineProps<{
   title?: string
@@ -65,6 +65,14 @@ onMounted(() => {
 
 onUnmounted(() => {
   props.eventEmitter?.off('closeAllTooltips')
+})
+
+watchEffect(() => {
+  if (isOpen.value) {
+    toolTipCompElement.value?.parentElement?.classList.add('_level-front')
+  } else {
+    toolTipCompElement.value?.parentElement?.classList.remove('_level-front')
+  }
 })
 
 const emit = defineEmits(['action'])
