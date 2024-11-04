@@ -32,6 +32,8 @@ import scene10 from '@/assets/models/gltf/scenes/dome/Beet.glb'
 import scene11 from '@/assets/models/gltf/scenes/dome/Container.glb'
 // @ts-ignore
 import scene12 from '@/assets/models/gltf/scenes/dome/Dome.glb'
+// @ts-ignore
+import scene13 from '@/assets/models/gltf/scenes/dome/Lift.glb'
 
 import Housetexture from '@/assets/images/dome/house.jpg'
 import Decorationtexture from '@/assets/images/dome/decoration.png'
@@ -45,6 +47,7 @@ import Bienentexture from '@/assets/images/dome/biene.png'
 import Beettexture from '@/assets/images/dome/beet.png'
 import Containertexture from '@/assets/images/dome/container.png'
 import Dometexture from '@/assets/images/dome/dome.png'
+import Lifttexture from '@/assets/images/dome/lift.png'
 
 const RESOURCE_NAME = 'vision1'
 const RESOURCE_NAME2 = 'vision3'
@@ -58,6 +61,7 @@ const RESOURCE_NAME9 = 'vision19'
 const RESOURCE_NAME10 = 'vision21'
 const RESOURCE_NAME11 = 'vision23'
 const RESOURCE_NAME12 = 'vision25'
+const RESOURCE_NAME13 = 'vision27'
 
 const RESOURCE_HOUSETEXTURE = 'vision2'
 const RESOURCE_DECORATIONTEXTURE = 'vision4'
@@ -71,6 +75,7 @@ const RESOURCE_BIENENTEXTURE = 'vision18'
 const RESOURCE_BEETTEXTURE = 'vision20'
 const RESOURCE_CONTAINERTEXTURE = 'vision22'
 const RESOURCE_DOMETEXTURE = 'vision24'
+const RESOURCE_LIFTTEXTURE = 'vision26'
 
 const sources: ResourceItem[] = [
   {
@@ -134,6 +139,11 @@ const sources: ResourceItem[] = [
     path: [scene12],
   },
   {
+    name: RESOURCE_NAME13,
+    type: 'gltfModel',
+    path: [scene13],
+  },
+  {
     name: RESOURCE_HOUSETEXTURE,
     type: 'texture',
     path: [Housetexture],
@@ -193,6 +203,11 @@ const sources: ResourceItem[] = [
     type: 'texture',
     path: [Dometexture],
   },
+  {
+    name: RESOURCE_LIFTTEXTURE,
+    type: 'texture',
+    path: [Lifttexture],
+  },
 ]
 
 export default class DomeVision extends VisionLoader {
@@ -217,6 +232,7 @@ export default class DomeVision extends VisionLoader {
     const gltf10 = this.resources.items[RESOURCE_NAME10] as GLTF
     const gltf11 = this.resources.items[RESOURCE_NAME11] as GLTF
     const gltf12 = this.resources.items[RESOURCE_NAME12] as GLTF
+    const gltf13 = this.resources.items[RESOURCE_NAME13] as GLTF
 
     //Haus
     const bakedMeshHouse = gltf.scene.children.find(
@@ -386,6 +402,20 @@ export default class DomeVision extends VisionLoader {
     })
     this.scene.add(gltf12.scene)
 
+    //Lift
+    const bakedMeshlift = gltf13.scene.children.find(
+      child => child.name === 'Lift',
+    )
+
+    const meshlift = this.resources.items[RESOURCE_LIFTTEXTURE]
+    meshlift.flipY = false
+    meshlift.colorSpace = THREE.SRGBColorSpace
+
+    bakedMeshlift.material = new THREE.MeshBasicMaterial({
+      map: meshlift,
+    })
+    this.scene.add(gltf13.scene)
+
     this.addToolTips()
   }
 
@@ -415,7 +445,7 @@ export default class DomeVision extends VisionLoader {
       'Gemeinschaft hat hier einen hohen Stellenwert. Jeden Abend versammeln sich die Bewohner*innen zum gemeinsamen Abendessen an diesem Tisch. Die AGI reguliert die Temperatur und sorgt für ein angenehmes Raumklima, sodass auch bei extremen Außenbedingungen ein gemütliches, ruhiges Zusammensein möglich ist. Solche gemeinschaftlichen Zusammenkünfte sind besonders wichtig geworden, da das Leben außerhalb der Kuppel isoliert und feindlich wirkt, wodurch der soziale Zusammenhalt innerhalb des Hauses noch mehr an Bedeutung gewinnt.',
       new THREE.Vector3(0, -0.5, 0),
     )
-    // TODO: lift missing
+
     this.addToolTip(
       this.getObjectByName('Lift'),
       'Lift',
