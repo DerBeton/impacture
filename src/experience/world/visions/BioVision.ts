@@ -259,6 +259,7 @@ export default class BioVision extends VisionLoader {
     meshHouse.flipY = false
     meshHouse.colorSpace = THREE.SRGBColorSpace
 
+    // @ts-ignore
     bakedMeshHouse.material = new THREE.MeshBasicMaterial({
       map: meshHouse,
     })
@@ -273,6 +274,7 @@ export default class BioVision extends VisionLoader {
     meshDecoration.colorSpace = THREE.SRGBColorSpace
 
     if (gltf2) {
+      // @ts-ignore
       bakedMeshDecoration.material = new THREE.MeshBasicMaterial({
         map: meshDecoration,
       })
@@ -290,6 +292,7 @@ export default class BioVision extends VisionLoader {
     meshTradingHouse.colorSpace = THREE.SRGBColorSpace
 
     if (gltf3) {
+      // @ts-ignore
       bakedMeshTradingHouse.material = new THREE.MeshBasicMaterial({
         map: meshTradingHouse,
       })
@@ -307,6 +310,7 @@ export default class BioVision extends VisionLoader {
     meshGround.colorSpace = THREE.SRGBColorSpace
 
     if (gltf4) {
+      // @ts-ignore
       bakedMeshGround.material = new THREE.MeshBasicMaterial({
         map: meshGround,
       })
@@ -324,6 +328,7 @@ export default class BioVision extends VisionLoader {
     meshDog.colorSpace = THREE.SRGBColorSpace
 
     if (gltf5) {
+      // @ts-ignore
       bakedMeshDog.material = new THREE.MeshBasicMaterial({
         map: meshDog,
       })
@@ -341,6 +346,7 @@ export default class BioVision extends VisionLoader {
     meshAntenna.colorSpace = THREE.SRGBColorSpace
 
     if (gltf6) {
+      // @ts-ignore
       bakedMeshAntenna.material = new THREE.MeshBasicMaterial({
         map: meshAntenna,
       })
@@ -358,6 +364,7 @@ export default class BioVision extends VisionLoader {
     meshPatchworkOther.colorSpace = THREE.SRGBColorSpace
 
     if (gltf7) {
+      // @ts-ignore
       bakedMeshPatchworkOther.material = new THREE.MeshBasicMaterial({
         map: meshPatchworkOther,
       })
@@ -377,6 +384,7 @@ export default class BioVision extends VisionLoader {
     meshPatchworkBalu.colorSpace = THREE.SRGBColorSpace
 
     if (gltf8) {
+      // @ts-ignore
       bakedMeshPatchworkBalu.material = new THREE.MeshBasicMaterial({
         map: meshPatchworkBalu,
       })
@@ -392,6 +400,7 @@ export default class BioVision extends VisionLoader {
     meshBiogas.colorSpace = THREE.SRGBColorSpace
 
     if (gltf9) {
+      // @ts-ignore
       bakedMeshBiogas.material = new THREE.MeshBasicMaterial({
         map: meshBiogas,
       })
@@ -410,6 +419,7 @@ export default class BioVision extends VisionLoader {
     meshSolarpanelOthers.colorSpace = THREE.SRGBColorSpace
 
     if (gltf10) {
+      // @ts-ignore
       bakedMeshSolarpanelOthers.material = new THREE.MeshBasicMaterial({
         map: meshSolarpanelOthers,
       })
@@ -427,6 +437,7 @@ export default class BioVision extends VisionLoader {
     meshSolarpanel.colorSpace = THREE.SRGBColorSpace
 
     if (gltf11) {
+      // @ts-ignore
       bakedMeshSolarpanel.material = new THREE.MeshBasicMaterial({
         map: meshSolarpanel,
       })
@@ -444,6 +455,7 @@ export default class BioVision extends VisionLoader {
     meshGardenbed1.colorSpace = THREE.SRGBColorSpace
 
     if (gltf12) {
+      // @ts-ignore
       bakedMeshGardenbed1.material = new THREE.MeshBasicMaterial({
         map: meshGardenbed1,
       })
@@ -460,6 +472,7 @@ export default class BioVision extends VisionLoader {
     meshGardenbed2.colorSpace = THREE.SRGBColorSpace
 
     if (gltf13) {
+      // @ts-ignore
       bakedMeshGardenbed2.material = new THREE.MeshBasicMaterial({
         map: meshGardenbed2,
       })
@@ -478,6 +491,7 @@ export default class BioVision extends VisionLoader {
     meshVerticalGardening.colorSpace = THREE.SRGBColorSpace
 
     if (gltf14) {
+      // @ts-ignore
       bakedMeshVerticalGardening.material = new THREE.MeshBasicMaterial({
         map: meshVerticalGardening,
       })

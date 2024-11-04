@@ -28,6 +28,7 @@
         :imageSrc="vote.imgSrc"
         :imgAlt="vote.imgAlt"
         :answer="vote.answer"
+        :curr-vote-path="votingResult"
         class="card"
         @voted="answer => handleVote(index, answer)"
       >
@@ -63,7 +64,22 @@ function handleVote(index: number, answer: 'yes' | 'no') {
 }
 
 function gotoCard(index: number) {
-  activeCard.value = index
+  // only allow to go back because of valid path checking
+  if (index < activeCard.value) {
+    activeCard.value = index
+
+    // unset following votes
+    unsetVotes(index)
+  }
+}
+
+// keeps votes till index and removes following votes
+function unsetVotes(keepUntil: number) {
+  votes.value.forEach((vote, index) => {
+    if (index >= keepUntil) {
+      vote.answer = ''
+    }
+  })
 }
 
 const votingCompleted = computed(() => {
@@ -74,7 +90,9 @@ const votingCompleted = computed(() => {
 const votingResult = computed(() => {
   let result = ''
   votes.value.forEach(vote => {
-    result += vote.answer === 'yes' ? 1 : 0
+    if (vote.answer === 'yes') result += 1
+    if (vote.answer === 'no') result += 0
+    if (vote.answer === '') result += ''
   })
   return result
 })
