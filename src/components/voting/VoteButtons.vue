@@ -2,7 +2,7 @@
   <button
     class="vote-button"
     v-if="type === 'yes'"
-    @click="emit('yes')"
+    @click="setAnswer('yes')"
     :class="{ '-active': selected === 'yes' }"
   >
     Ja
@@ -10,7 +10,7 @@
   <button
     class="vote-button"
     v-else-if="type === 'no'"
-    @click="emit('no')"
+    @click="setAnswer('no')"
     :class="{ '-active': selected === 'no' }"
   >
     Nein
@@ -18,10 +18,17 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{
+const props = defineProps<{
   type: 'yes' | 'no'
   selected: 'yes' | 'no' | ''
+  disabled?: boolean
 }>()
+
+function setAnswer(answer: 'yes' | 'no') {
+  if (!props.disabled) {
+    emit(answer)
+  }
+}
 
 const emit = defineEmits(['yes', 'no'])
 </script>

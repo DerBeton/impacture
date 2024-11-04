@@ -15,11 +15,13 @@
             :selected="answer"
             type="yes"
             @yes="emit('voted', 'yes')"
+            :disabled="!isPathValid('yes')"
           ></VoteButton>
           <VoteButton
             :selected="answer"
             type="no"
             @no="emit('voted', 'no')"
+            :disabled="!isPathValid('no')"
           ></VoteButton>
         </div>
       </div>
@@ -40,12 +42,14 @@
 import { computed, ref } from 'vue'
 import VoteButton from './VoteButtons.vue'
 import { useParallax } from '@vueuse/core'
+import { VisionManager } from '@/experience/world/visions/VisionManager';
 
-defineProps<{
+const props = defineProps<{
   question: string
   description: string
   imageSrc?: string
   imgAlt?: string
+  currVotePath: string // current string of vote answers eg. 010
   answer: 'yes' | 'no' | ''
 }>()
 
@@ -66,6 +70,10 @@ const cardStyleBack = computed(() => ({
 
 function flipCard() {
   isFlipped.value = !isFlipped.value
+}
+
+function isPathValid(answer: 'yes' | 'no') {
+  return VisionManager.isPathPossible(props.currVotePath, answer)
 }
 
 const emit = defineEmits<{
