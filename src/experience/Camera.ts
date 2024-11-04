@@ -31,7 +31,11 @@ export default class Camera {
       100,
     )
 
-    this.instance.position.set(15, 20, 45) // move camera
+    this.instance.position.set(
+      11.532979353878366,
+      17.04433759987522,
+      35.77013708083898,
+    ) // move camera
     this.scene.add(this.instance)
   }
 
@@ -58,6 +62,7 @@ export default class Camera {
   public update() {
     if (this.controls.enableDamping) {
       this.controls.update()
+      console.log(this.instance.position)
     }
   }
 }
