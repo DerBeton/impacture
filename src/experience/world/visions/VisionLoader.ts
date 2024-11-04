@@ -43,13 +43,14 @@ export default abstract class VisionLoader
     obj: THREE.Object3D | undefined,
     title: string,
     text: string,
+    offset?: THREE.Vector3,
   ) {
     if (obj instanceof THREE.Object3D) {
       const tooltip = new Tooltip(
         obj,
         title,
         text,
-        new THREE.Vector3(0, 0, 0),
+        offset instanceof THREE.Vector3 ? offset : new THREE.Vector3(0, 0, 0),
         this,
       )
 
