@@ -396,7 +396,7 @@ export default class DomeVision extends VisionLoader {
       'Licht ist unerlässlich, um nicht in völliger Dunkelheit zu leben. Diese Lampen wurden notfallmässig installiert, da es in den letzten Jahren durch den immer dichter werdenden Smog zunehmend dunkler geworden ist. Aufgrund eingeschränkter Transportmöglichkeiten sind Materialien knapp, und die Lampen bestehen oft aus recycelten oder lokal verfügbaren Teilen.',
       new THREE.Vector3(0, -0.5, 0),
     )
-    // TODO: use Bienenstock instead of Biene
+
     this.addToolTip(
       this.getObjectByName('Biene'),
       'Bienenstock',
