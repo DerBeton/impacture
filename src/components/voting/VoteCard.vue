@@ -6,7 +6,8 @@
   >
     <div class="front-side" :style="cardStyleFront">
       <span @click="flipCard()" class="flip"></span>
-      <div class="image"></div>
+      <img v-if="imageSrc" :src="imageSrc" :alt="imgAlt ?? 'Image'" class="image"></img>
+      <div v-else class="image"></div>
       <div class="vote">
         <h3 class="question">{{ question }}</h3>
         <div class="vote-buttons">
@@ -43,6 +44,8 @@ import { useParallax } from '@vueuse/core'
 defineProps<{
   question: string
   description: string
+  imageSrc?: string
+  imgAlt?: string
   answer: 'yes' | 'no' | ''
 }>()
 
@@ -134,6 +137,7 @@ const emit = defineEmits<{
     @include border-md;
 
     aspect-ratio: 1;
+    width: 100%;
     background-color: lightgray;
   }
 
