@@ -29,16 +29,17 @@ import DateStatus from '@/components/home/DateStatus.vue'
 import ChatBubble from '@/components/chat/ChatBubble.vue'
 import ChatBox from '@/components/chat/ChatBox.vue'
 import { onMounted, ref } from 'vue'
-import { useRoute } from 'vue-router'
 import ChatMessage from '@/components/chat/ChatMessage.vue'
 import { supabase } from '@/lib/supabaseClient'
 import type { Database } from '@/types/database.types'
 
-const route = useRoute()
+const props = defineProps<{
+  id: string
+}>()
+
 const isChatOpen = ref<boolean>(false)
-const visionRoute = ref<string>(
-  Array.isArray(route.params.id) ? route.params.id[0] : route.params.id,
-)
+const visionRoute = ref<string>(props.id)
+
 const isCommentVisible = ref<boolean>(false)
 
 function toggleChat() {
