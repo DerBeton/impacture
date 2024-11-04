@@ -93,7 +93,7 @@ const votes = ref<Vote[]>([
     id: 'privacy',
     title: 'Möchten Sie dem Gesetz zu mehr Privatsphäre zustimmen?',
     description:
-      'Laut den Initianten soll mit der Initiative der Schutz insbesondere der Privatsphäre in der Verfassung verankert werden. Die Privatsphäre ist laut den Initianten ein wichtiger Bestandteil des Vertrauensverhältnisses zwischen Staat und Bürger. Wegen der jüngsten politischen und gesetzgeberischen Entwicklungen müsse dieses in der Bundesverfassung enthaltene Grundrecht präzisiert und ergänzt werden.',
+      'Laut den Initiant*innen soll mit der Initiative der Schutz insbesondere der Privatsphäre in der Verfassung verankert werden. Die Privatsphäre ist laut den Initiant*innen ein wichtiger Bestandteil des Vertrauensverhältnisses zwischen Staat und Bürger*innen. Wegen der jüngsten politischen und gesetzgeberischen Entwicklungen müsse dieses in der Bundesverfassung enthaltene Grundrecht präzisiert und ergänzt werden.',
     imgSrc: '/images/votes/privacy.jpg',
     imgAlt: 'Image showing a phone with lock to symbolize privacy',
     answer: '',
