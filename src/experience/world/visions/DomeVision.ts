@@ -372,7 +372,7 @@ export default class DomeVision extends VisionLoader {
     })
     this.scene.add(gltf11.scene)
 
-    //Container
+    //Dome
     const bakedMeshDome = gltf12.scene.children.find(
       child => child.name === 'Sphere',
     )
@@ -385,5 +385,55 @@ export default class DomeVision extends VisionLoader {
       map: meshDome,
     })
     this.scene.add(gltf12.scene)
+
+    this.addToolTips()
+  }
+
+  private addToolTips() {
+    this.addToolTip(
+      this.getObjectByName('Lampen'),
+      'Lampe',
+      'Licht ist unerlässlich, um nicht in völliger Dunkelheit zu leben. Diese Lampen wurden notfallmässig installiert, da es in den letzten Jahren durch den immer dichter werdenden Smog zunehmend dunkler geworden ist. Aufgrund eingeschränkter Transportmöglichkeiten sind Materialien knapp, und die Lampen bestehen oft aus recycelten oder lokal verfügbaren Teilen.',
+      new THREE.Vector3(0, -0.5, 0),
+    )
+    // TODO: use Bienenstock instead of Biene
+    this.addToolTip(
+      this.getObjectByName('Biene'),
+      'Bienenstock',
+      'Dieses Haus verfügt, wie viele andere auch, über eine unabhängige, private AGI (Künstliche Allgemeine Intelligenz), die nicht nur das Haus, sondern auch das gesamte darin enthaltene Ökosystem steuert. Ein Beispiel dafür sind die Roboterbienen, die dafür sorgen, dass Pflanzen bestäubt werden und die Natur innerhalb der Kuppel überlebt – ironischerweise eine künstliche Nachahmung der Natur, da echte Bienen ausgestorben sind. Die AGI ist jedoch ein enormer Stromverbraucher, doch ohne sie würde das Ökosystem kollabieren. Und ja, diese AGI ist ein riesiger Stromfresser. Aber ohne diese AGI würde alles kollabieren. Strom ist essenziell!',
+      new THREE.Vector3(0, -0.5, 0),
+    )
+    this.addToolTip(
+      this.getObjectByName('Wasserfilter'),
+      'Wasserfilter',
+      'Regenwasser ist durch die starke Umweltverschmutzung unbrauchbar geworden. Dieser Wasserfilter entzieht dem Bodenwasser, reinigt es und macht es für den Haushalt nutzbar. Zusätzlich ist ein Sauerstofffilter integriert, der die Atemluft im Haus ebenfalls von Schadstoffen befreit. Diese Systeme sind unverzichtbar geworden, da die Außenwelt ungesunde Luft und verseuchtes Wasser bereithält.',
+      new THREE.Vector3(0, -0.5, 0),
+    )
+    this.addToolTip(
+      this.getObjectByName('Tisch'),
+      'Bank mit Tisch',
+      'Gemeinschaft hat hier einen hohen Stellenwert. Jeden Abend versammeln sich die Bewohner*innen zum gemeinsamen Abendessen an diesem Tisch. Die AGI reguliert die Temperatur und sorgt für ein angenehmes Raumklima, sodass auch bei extremen Außenbedingungen ein gemütliches, ruhiges Zusammensein möglich ist. Solche gemeinschaftlichen Zusammenkünfte sind besonders wichtig geworden, da das Leben außerhalb der Kuppel isoliert und feindlich wirkt, wodurch der soziale Zusammenhalt innerhalb des Hauses noch mehr an Bedeutung gewinnt.',
+      new THREE.Vector3(0, -0.5, 0),
+    )
+    // TODO: lift missing
+    this.addToolTip(
+      this.getObjectByName('Lift'),
+      'Lift',
+      'Dieser Lift führt die Bewohner*innen des Hauses hinunter zu einem unterirdischen Zugnetz, das für den Transport zwischen Wohnbereichen und Arbeitsstätten verwendet wird. Da die Außenluft aufgrund des Smogs so stark belastet ist, möchte man sie um jeden Preis vermeiden. Die meisten Menschen arbeiten heute in Kohlekraftwerken, da diese als eine der letzten Energiequellen genug Strom für die energiehungrige AGI liefern können. Die starke Luftverschmutzung durch die Kohlekraftwerke hat Solarplatten fast nutzlos gemacht, da kaum genug Sonnenlicht durchdringt, um Solarenergie effizient zu nutzen.',
+      new THREE.Vector3(0, -0.5, 0),
+    )
+    this.addToolTip(
+      this.getObjectByName('Container'),
+      'Container',
+      'Als die Schutzkuppeln eingeführt wurden, konnte sich nicht jede*r ein eigenes Zuhause innerhalb der Kuppel leisten. Die Eigentümer*innen dieses Hauses schauten, dass vor der Installation mehr Platz geschafft werden konnte, durch eErweiterungen des Hauses für ihre Verwandten, damit alle normal leben können. Da es nach der Installation der Kuppel immer schwieriger wurde, größere Baumaterialien hereinzubringen, war der Container eine improvisierte Lösung, die die Bewohner*innen selbst für einen Cousin gebaut haben. Es war ein echtes Gemeinschaftsprojekt und zeigt, wie Familien zusammenrücken, um die schwierigen Lebensumstände gemeinsam zu bewältigen.',
+      new THREE.Vector3(0, -0.5, 0),
+    )
+    // TODO: dome missing
+    this.addToolTip(
+      this.getObjectByName('Kuppel'),
+      'Kuppel',
+      'Die Kuppel wurde vor etwa 30 Jahren eingeführt, als die Luftverschmutzung so extrem wurde, dass das Leben ausserhalb der Kuppel fast unmöglich war. Die Einführung der AGI benötigte so viel Strom, dass man auf schädliche Energiequellen wie Kohle zurückgriff, da kaum noch Atomkraftwerke verfügbar waren und die erneuerbaren Energien der Belastung nicht standhalten konnten. Durch die massive Luftverschmutzung wurde es unverzichtbar, Kuppeln zum Schutz der Menschen zu errichten. Diese Kuppeln bieten einen abgeschirmten Raum, der die giftige Außenwelt fernhält und eine kontrollierte, lebensfreundliche und sehr angenehme Umgebung ermöglicht.',
+      new THREE.Vector3(0, -0.5, 0),
+    )
   }
 }

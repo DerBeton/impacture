@@ -485,6 +485,10 @@ export default class BioVision extends VisionLoader {
 
     this.scene.add(gltf14.scene)
 
+    this.addTooltips()
+  }
+
+  private addTooltips() {
     this.addToolTip(
       this.getObjectByName('Antenna'),
       'Stromnetz und Kommunikation',
