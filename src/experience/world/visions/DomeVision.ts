@@ -428,9 +428,9 @@ export default class DomeVision extends VisionLoader {
       'Als die Schutzkuppeln eingeführt wurden, konnte sich nicht jede*r ein eigenes Zuhause innerhalb der Kuppel leisten. Die Eigentümer*innen dieses Hauses schauten, dass vor der Installation mehr Platz geschafft werden konnte, durch eErweiterungen des Hauses für ihre Verwandten, damit alle normal leben können. Da es nach der Installation der Kuppel immer schwieriger wurde, größere Baumaterialien hereinzubringen, war der Container eine improvisierte Lösung, die die Bewohner*innen selbst für einen Cousin gebaut haben. Es war ein echtes Gemeinschaftsprojekt und zeigt, wie Familien zusammenrücken, um die schwierigen Lebensumstände gemeinsam zu bewältigen.',
       new THREE.Vector3(0, -0.5, 0),
     )
-    // TODO: dome missing
+
     this.addToolTip(
-      this.getObjectByName('Kuppel'),
+      this.getObjectByName('Sphere'),
       'Kuppel',
       'Die Kuppel wurde vor etwa 30 Jahren eingeführt, als die Luftverschmutzung so extrem wurde, dass das Leben ausserhalb der Kuppel fast unmöglich war. Die Einführung der AGI benötigte so viel Strom, dass man auf schädliche Energiequellen wie Kohle zurückgriff, da kaum noch Atomkraftwerke verfügbar waren und die erneuerbaren Energien der Belastung nicht standhalten konnten. Durch die massive Luftverschmutzung wurde es unverzichtbar, Kuppeln zum Schutz der Menschen zu errichten. Diese Kuppeln bieten einen abgeschirmten Raum, der die giftige Außenwelt fernhält und eine kontrollierte, lebensfreundliche und sehr angenehme Umgebung ermöglicht.',
       new THREE.Vector3(0, -0.5, 0),
