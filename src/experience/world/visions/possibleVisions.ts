@@ -8,7 +8,6 @@ interface Visions {
   class: new () => VisionType
 }
 
-// don't forget to update VisionManager.spec.ts test cases after adding a new Vision
 export const possibleVisions: Visions[] = [
   {
     id: '0010',
