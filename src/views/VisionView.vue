@@ -85,6 +85,8 @@ onMounted(() => {
 .future-view {
   position: relative;
   padding: 1.75rem;
+  height: 100%;
+  width: 100%;
 
   > .status {
     margin: 1.75rem;
