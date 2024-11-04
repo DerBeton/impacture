@@ -19,6 +19,22 @@ import scene4 from '@/assets/models/gltf/scenes/bio/Ground.glb'
 import scene5 from '@/assets/models/gltf/scenes/bio/Dog.glb'
 // @ts-ignore
 import scene6 from '@/assets/models/gltf/scenes/bio/Antenna.glb'
+// @ts-ignore
+import scene7 from '@/assets/models/gltf/scenes/bio/patchwork_others.glb'
+// @ts-ignore
+import scene8 from '@/assets/models/gltf/scenes/bio/patchworkBlau.glb'
+// @ts-ignore
+import scene9 from '@/assets/models/gltf/scenes/bio/Biogas.glb'
+// @ts-ignore
+import scene10 from '@/assets/models/gltf/scenes/bio/Solarpanel_others.glb'
+// @ts-ignore
+import scene11 from '@/assets/models/gltf/scenes/bio/Solarpanel.glb'
+// @ts-ignore
+import scene12 from '@/assets/models/gltf/scenes/bio/Gardenbed1.glb'
+// @ts-ignore
+import scene13 from '@/assets/models/gltf/scenes/bio/Gardenbed2.glb'
+// @ts-ignore
+import scene14 from '@/assets/models/gltf/scenes/bio/VerticalGardening.glb'
 
 import Housetexture from '@/assets/images/haus_baked.png'
 import Decorationtexture from '@/assets/images/decoration_baked.png'
@@ -26,6 +42,14 @@ import TradingHousetexture from '@/assets/images/tradingHouse_baked.jpg'
 import Groundtexture from '@/assets/images/ground_baked.jpg'
 import Dogtexture from '@/assets/images/dog_baked.png'
 import Antennatexture from '@/assets/images/antenna_baked.png'
+import PatchworkOthertexture from '@/assets/images/patchwork_others_baked.png'
+import PatchworkBlautexture from '@/assets/images/patchworkblau_baked.png'
+import Biogastexture from '@/assets/images/biogas_baked.png'
+import SolarpanelOthertexture from '@/assets/images/solarpanel_others_baked.png'
+import Solarpaneltexture from '@/assets/images/solarpanel_baked.png'
+import Gardenbed1texture from '@/assets/images/gardenbed1_baked.png'
+import Gardenbed2texture from '@/assets/images/gardenbed2_baked.png'
+import VerticalGardeningtexture from '@/assets/images/verticalgardening_baked.png'
 
 const RESOURCE_NAME = 'vision'
 const RESOURCE_NAME2 = 'vision2'
@@ -33,6 +57,14 @@ const RESOURCE_NAME3 = 'vision3'
 const RESOURCE_NAME4 = 'vision7'
 const RESOURCE_NAME5 = 'vision9'
 const RESOURCE_NAME6 = 'vision11'
+const RESOURCE_NAME7 = 'vision13'
+const RESOURCE_NAME8 = 'vision15'
+const RESOURCE_NAME9 = 'vision17'
+const RESOURCE_NAME10 = 'vision19'
+const RESOURCE_NAME11 = 'vision21'
+const RESOURCE_NAME12 = 'vision23'
+const RESOURCE_NAME13 = 'vision25'
+const RESOURCE_NAME14 = 'vision27'
 
 const RESOURCE_HOUSETEXTURE = 'vision4'
 const RESOURCE_DECORATIONTEXTURE = 'vision5'
@@ -40,6 +72,14 @@ const RESOURCE_TRADINGHOUSETEXTURE = 'vision6'
 const RESOURCE_GROUNDTEXTURE = 'vision8'
 const RESOURCE_DOGTEXTURE = 'vision10'
 const RESOURCE_ANTENNATEXTURE = 'vision12'
+const RESOURCE_PATCHWORKOTHERTEXTURE = 'vision14'
+const RESOURCE_PATCHWORKBLAUTEXTURE = 'vision16'
+const RESOURCE_BIOGASTEXTURE = 'vision18'
+const RESOURCE_SOLARPANELOTHERSTEXTURE = 'vision20'
+const RESOURCE_SOLARPANELTEXTURE = 'vision22'
+const RESOURCE_GARDENBED1TEXTURE = 'vision24'
+const RESOURCE_GARDENBED2TEXTURE = 'vision26'
+const RESOURCE_VERTICALGARDENINGTEXTURE = 'vision28'
 
 const sources: ResourceItem[] = [
   {
@@ -73,6 +113,46 @@ const sources: ResourceItem[] = [
     path: [scene6],
   },
   {
+    name: RESOURCE_NAME7,
+    type: 'gltfModel',
+    path: [scene7],
+  },
+  {
+    name: RESOURCE_NAME8,
+    type: 'gltfModel',
+    path: [scene8],
+  },
+  {
+    name: RESOURCE_NAME9,
+    type: 'gltfModel',
+    path: [scene9],
+  },
+  {
+    name: RESOURCE_NAME10,
+    type: 'gltfModel',
+    path: [scene10],
+  },
+  {
+    name: RESOURCE_NAME11,
+    type: 'gltfModel',
+    path: [scene11],
+  },
+  {
+    name: RESOURCE_NAME12,
+    type: 'gltfModel',
+    path: [scene12],
+  },
+  {
+    name: RESOURCE_NAME13,
+    type: 'gltfModel',
+    path: [scene13],
+  },
+  {
+    name: RESOURCE_NAME14,
+    type: 'gltfModel',
+    path: [scene14],
+  },
+  {
     name: RESOURCE_HOUSETEXTURE,
     type: 'texture',
     path: [Housetexture],
@@ -102,6 +182,47 @@ const sources: ResourceItem[] = [
     type: 'texture',
     path: [Antennatexture],
   },
+  {
+    name: RESOURCE_PATCHWORKOTHERTEXTURE,
+    type: 'texture',
+    path: [PatchworkOthertexture],
+  },
+  {
+    name: RESOURCE_PATCHWORKBLAUTEXTURE,
+    type: 'texture',
+    path: [PatchworkBlautexture],
+  },
+  {
+    name: RESOURCE_BIOGASTEXTURE,
+    type: 'texture',
+    path: [Biogastexture],
+  },
+  {
+    name: RESOURCE_SOLARPANELOTHERSTEXTURE,
+    type: 'texture',
+    path: [SolarpanelOthertexture],
+  },
+  {
+    name: RESOURCE_SOLARPANELTEXTURE,
+    type: 'texture',
+    path: [Solarpaneltexture],
+  },
+
+  {
+    name: RESOURCE_GARDENBED1TEXTURE,
+    type: 'texture',
+    path: [Gardenbed1texture],
+  },
+  {
+    name: RESOURCE_GARDENBED2TEXTURE,
+    type: 'texture',
+    path: [Gardenbed2texture],
+  },
+  {
+    name: RESOURCE_VERTICALGARDENINGTEXTURE,
+    type: 'texture',
+    path: [VerticalGardeningtexture],
+  },
 ]
 
 export default class BioVision extends VisionLoader {
@@ -120,6 +241,14 @@ export default class BioVision extends VisionLoader {
     const gltf4 = this.resources.items[RESOURCE_NAME4] as GLTF
     const gltf5 = this.resources.items[RESOURCE_NAME5] as GLTF
     const gltf6 = this.resources.items[RESOURCE_NAME6] as GLTF
+    const gltf7 = this.resources.items[RESOURCE_NAME7] as GLTF
+    const gltf8 = this.resources.items[RESOURCE_NAME8] as GLTF
+    const gltf9 = this.resources.items[RESOURCE_NAME9] as GLTF
+    const gltf10 = this.resources.items[RESOURCE_NAME10] as GLTF
+    const gltf11 = this.resources.items[RESOURCE_NAME11] as GLTF
+    const gltf12 = this.resources.items[RESOURCE_NAME12] as GLTF
+    const gltf13 = this.resources.items[RESOURCE_NAME13] as GLTF
+    const gltf14 = this.resources.items[RESOURCE_NAME14] as GLTF
 
     //Haus
     const bakedMeshHouse = gltf.scene.children.find(
@@ -200,7 +329,7 @@ export default class BioVision extends VisionLoader {
       })
     }
 
-    this.scene.add(gltf6.scene)
+    this.scene.add(gltf5.scene)
 
     // Antenna
     const bakedMeshAntenna = gltf6.scene.children.find(
@@ -216,8 +345,145 @@ export default class BioVision extends VisionLoader {
         map: meshAntenna,
       })
     }
-
     this.scene.add(gltf6.scene)
+    // patchwork other
+
+    const bakedMeshPatchworkOther = gltf7.scene.children.find(
+      child => child.name === 'PatchworkOther',
+    )
+
+    const meshPatchworkOther =
+      this.resources.items[RESOURCE_PATCHWORKOTHERTEXTURE]
+    meshPatchworkOther.flipY = false
+    meshPatchworkOther.colorSpace = THREE.SRGBColorSpace
+
+    if (gltf7) {
+      bakedMeshPatchworkOther.material = new THREE.MeshBasicMaterial({
+        map: meshPatchworkOther,
+      })
+    }
+
+    this.scene.add(gltf7.scene)
+
+    // patchworkblau
+
+    const bakedMeshPatchworkBalu = gltf8.scene.children.find(
+      child => child.name === 'PatchworkBlau',
+    )
+
+    const meshPatchworkBalu =
+      this.resources.items[RESOURCE_PATCHWORKBLAUTEXTURE]
+    meshPatchworkBalu.flipY = false
+    meshPatchworkBalu.colorSpace = THREE.SRGBColorSpace
+
+    if (gltf8) {
+      bakedMeshPatchworkBalu.material = new THREE.MeshBasicMaterial({
+        map: meshPatchworkBalu,
+      })
+    }
+    this.scene.add(gltf8.scene)
+    // Biogas
+    const bakedMeshBiogas = gltf9.scene.children.find(
+      child => child.name === 'Biogas',
+    )
+
+    const meshBiogas = this.resources.items[RESOURCE_BIOGASTEXTURE]
+    meshBiogas.flipY = false
+    meshBiogas.colorSpace = THREE.SRGBColorSpace
+
+    if (gltf9) {
+      bakedMeshBiogas.material = new THREE.MeshBasicMaterial({
+        map: meshBiogas,
+      })
+    }
+
+    this.scene.add(gltf9.scene)
+
+    // Solar others
+    const bakedMeshSolarpanelOthers = gltf10.scene.children.find(
+      child => child.name === 'SolarpanelOther',
+    )
+
+    const meshSolarpanelOthers =
+      this.resources.items[RESOURCE_SOLARPANELOTHERSTEXTURE]
+    meshSolarpanelOthers.flipY = false
+    meshSolarpanelOthers.colorSpace = THREE.SRGBColorSpace
+
+    if (gltf10) {
+      bakedMeshSolarpanelOthers.material = new THREE.MeshBasicMaterial({
+        map: meshSolarpanelOthers,
+      })
+    }
+
+    this.scene.add(gltf10.scene)
+
+    // Solar
+    const bakedMeshSolarpanel = gltf11.scene.children.find(
+      child => child.name === 'Solarpanel',
+    )
+
+    const meshSolarpanel = this.resources.items[RESOURCE_SOLARPANELTEXTURE]
+    meshSolarpanel.flipY = false
+    meshSolarpanel.colorSpace = THREE.SRGBColorSpace
+
+    if (gltf11) {
+      bakedMeshSolarpanel.material = new THREE.MeshBasicMaterial({
+        map: meshSolarpanel,
+      })
+    }
+
+    this.scene.add(gltf11.scene)
+
+    // Gardenbed 1
+    const bakedMeshGardenbed1 = gltf12.scene.children.find(
+      child => child.name === 'Gardenbed1',
+    )
+
+    const meshGardenbed1 = this.resources.items[RESOURCE_GARDENBED1TEXTURE]
+    meshGardenbed1.flipY = false
+    meshGardenbed1.colorSpace = THREE.SRGBColorSpace
+
+    if (gltf12) {
+      bakedMeshGardenbed1.material = new THREE.MeshBasicMaterial({
+        map: meshGardenbed1,
+      })
+    }
+    this.scene.add(gltf12.scene)
+
+    // Gardenbed 2
+    const bakedMeshGardenbed2 = gltf13.scene.children.find(
+      child => child.name === 'Gardenbed2',
+    )
+
+    const meshGardenbed2 = this.resources.items[RESOURCE_GARDENBED2TEXTURE]
+    meshGardenbed2.flipY = false
+    meshGardenbed2.colorSpace = THREE.SRGBColorSpace
+
+    if (gltf13) {
+      bakedMeshGardenbed2.material = new THREE.MeshBasicMaterial({
+        map: meshGardenbed2,
+      })
+    }
+
+    this.scene.add(gltf13.scene)
+
+    // VerticalGardening1
+    const bakedMeshVerticalGardening = gltf14.scene.children.find(
+      child => child.name === 'VerticalGardening',
+    )
+
+    const meshVerticalGardening =
+      this.resources.items[RESOURCE_VERTICALGARDENINGTEXTURE]
+    meshVerticalGardening.flipY = false
+    meshVerticalGardening.colorSpace = THREE.SRGBColorSpace
+
+    if (gltf14) {
+      bakedMeshVerticalGardening.material = new THREE.MeshBasicMaterial({
+        map: meshVerticalGardening,
+      })
+    }
+
+    this.scene.add(gltf14.scene)
 
     this.addToolTip(
       this.getObjectByName('Antenna'),
