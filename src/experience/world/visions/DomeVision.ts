@@ -30,6 +30,8 @@ import scene9 from '@/assets/models/gltf/scenes/dome/Biene.glb'
 import scene10 from '@/assets/models/gltf/scenes/dome/Beet.glb'
 // @ts-ignore
 import scene11 from '@/assets/models/gltf/scenes/dome/Container.glb'
+// @ts-ignore
+import scene12 from '@/assets/models/gltf/scenes/dome/Dome.glb'
 
 import Housetexture from '@/assets/images/dome/house.jpg'
 import Decorationtexture from '@/assets/images/dome/decoration.png'
@@ -42,6 +44,7 @@ import GemuseBaumtexture from '@/assets/images/dome/gemuseBaum.png'
 import Bienentexture from '@/assets/images/dome/biene.png'
 import Beettexture from '@/assets/images/dome/beet.png'
 import Containertexture from '@/assets/images/dome/container.png'
+import Dometexture from '@/assets/images/dome/dome.png'
 
 const RESOURCE_NAME = 'vision1'
 const RESOURCE_NAME2 = 'vision3'
@@ -54,6 +57,7 @@ const RESOURCE_NAME8 = 'vision17'
 const RESOURCE_NAME9 = 'vision19'
 const RESOURCE_NAME10 = 'vision21'
 const RESOURCE_NAME11 = 'vision23'
+const RESOURCE_NAME12 = 'vision25'
 
 const RESOURCE_HOUSETEXTURE = 'vision2'
 const RESOURCE_DECORATIONTEXTURE = 'vision4'
@@ -66,6 +70,7 @@ const RESOURCE_GEMUSEBAUMTEXTURE = 'vision16'
 const RESOURCE_BIENENTEXTURE = 'vision18'
 const RESOURCE_BEETTEXTURE = 'vision20'
 const RESOURCE_CONTAINERTEXTURE = 'vision22'
+const RESOURCE_DOMETEXTURE = 'vision24'
 
 const sources: ResourceItem[] = [
   {
@@ -124,6 +129,11 @@ const sources: ResourceItem[] = [
     path: [scene11],
   },
   {
+    name: RESOURCE_NAME12,
+    type: 'gltfModel',
+    path: [scene12],
+  },
+  {
     name: RESOURCE_HOUSETEXTURE,
     type: 'texture',
     path: [Housetexture],
@@ -178,6 +188,11 @@ const sources: ResourceItem[] = [
     type: 'texture',
     path: [Containertexture],
   },
+  {
+    name: RESOURCE_DOMETEXTURE,
+    type: 'texture',
+    path: [Dometexture],
+  },
 ]
 
 export default class DomeVision extends VisionLoader {
@@ -201,6 +216,7 @@ export default class DomeVision extends VisionLoader {
     const gltf9 = this.resources.items[RESOURCE_NAME9] as GLTF
     const gltf10 = this.resources.items[RESOURCE_NAME10] as GLTF
     const gltf11 = this.resources.items[RESOURCE_NAME11] as GLTF
+    const gltf12 = this.resources.items[RESOURCE_NAME12] as GLTF
 
     //Haus
     const bakedMeshHouse = gltf.scene.children.find(
@@ -355,6 +371,20 @@ export default class DomeVision extends VisionLoader {
       map: meshContainer,
     })
     this.scene.add(gltf11.scene)
+
+    //Dome
+    const bakedMeshDome = gltf12.scene.children.find(
+      child => child.name === 'Sphere',
+    )
+
+    const meshDome = this.resources.items[RESOURCE_DOMETEXTURE]
+    meshDome.flipY = false
+    meshDome.colorSpace = THREE.SRGBColorSpace
+
+    bakedMeshDome.material = new THREE.MeshBasicMaterial({
+      map: meshDome,
+    })
+    this.scene.add(gltf12.scene)
 
     this.addToolTips()
   }
