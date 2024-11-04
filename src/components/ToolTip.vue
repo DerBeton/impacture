@@ -2,7 +2,7 @@
   <div ref="toolTipCompElement" class="tooltip-comp">
     <div @click="toggleOpen()" class="dot -clickable"></div>
     <div v-if="isOpen && hasContent" class="content">
-      <h4 v-if="title" class="title">{{ title }}</h4>
+      <h4 class="title">{{ title ?? '&nbsp;' }}</h4>
       <p v-if="text" class="text">{{ text }}</p>
       <img
         @click="toggleOpen()"

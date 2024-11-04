@@ -9,7 +9,7 @@
       </div>
 
       <div class="house-container">
-        <ToolTip @action="isIntroStarted = true" class="tip" text="Hey, Glückwunsch! Du bist erwachsen, zahlst Miete und wohnst jetzt in diesem Haus! Doch hast du dich jemals gefragt, wie deine brillianten Entscheidungen zukünftige Generationen beeinflussen können?" action-text="Eigentlich nicht"></ToolTip>
+        <ToolTip @action="isIntroStarted = true" class="tip" title="Dein Haus" text="Hey, Glückwunsch! Du bist erwachsen, zahlst Miete und wohnst jetzt in diesem Haus! Doch hast du dich jemals gefragt, wie deine brillianten Entscheidungen zukünftige Generationen beeinflussen können?" action-text="Eigentlich nicht"></ToolTip>
         <img src="/images/iso-house-small.png" class="image"></img>
       </div>
 
