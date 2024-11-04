@@ -10,7 +10,7 @@ import VisionLoader from './VisionLoader'
 // @ts-ignore
 import scene from '@/assets/models/gltf/scenes/bio/Haus.glb'
 // @ts-ignore
-import scene2 from '@/assets/models/gltf/scenes/bio/Decoration.glb'
+import scene2 from '@/assets/models/gltf/scenes/bio/Decoration_2.glb'
 // @ts-ignore
 import scene3 from '@/assets/models/gltf/scenes/bio/TradingHouse.glb'
 // @ts-ignore
@@ -37,7 +37,7 @@ import scene13 from '@/assets/models/gltf/scenes/bio/Gardenbed2.glb'
 import scene14 from '@/assets/models/gltf/scenes/bio/VerticalGardening.glb'
 
 import Housetexture from '@/assets/images/haus_baked.png'
-import Decorationtexture from '@/assets/images/decoration_baked.png'
+import Decorationtexture from '@/assets/images/decoration_baked_2.png'
 import TradingHousetexture from '@/assets/images/tradingHouse_baked.jpg'
 import Groundtexture from '@/assets/images/ground_baked.jpg'
 import Dogtexture from '@/assets/images/dog_baked.png'
