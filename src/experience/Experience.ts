@@ -10,7 +10,6 @@ import LabelRenderer from './LabelRenderer'
 import Controls from './Controls'
 import BioVision from './world/visions/BioVision'
 import DomeVision from './world/visions/DomeVision'
-import TestVision from './world/visions/TestVision'
 import { VisionManager } from './world/visions/VisionManager'
 
 let instance: Experience | null = null
