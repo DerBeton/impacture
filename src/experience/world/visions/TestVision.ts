@@ -39,9 +39,6 @@ const RESOURCE_GROUNDTEXTURE = 'vision8'
 const RESOURCE_DOGTEXTURE = 'vision10'
 const RESOURCE_ANTENNATEXTURE = 'vision12'
 
-const RESOURCE_HOUSETEXTURE = 'vision3'
-const RESOURCE_DECORATIONTEXTURE = 'vision4'
-
 const sources: ResourceItem[] = [
   {
     name: RESOURCE_NAME,
