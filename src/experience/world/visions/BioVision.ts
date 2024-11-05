@@ -532,6 +532,7 @@ export default class BioVision extends VisionLoader {
       this.getObjectByName('TradingHouse'),
       'Schrank',
       'Dieser Schrank ist inzwischen ein fester Bestandteil jedes Haushalts. Nach der Wirtschaftskrise und dem Konsumcrash hörten die Menschen auf, ständig neue Dinge zu kaufen. Es wird kaum noch etwas neu produziert. Stattdessen tauschen die Menschen, um an das zu gelangen, was sie benötigen. Dinge, die nicht mehr gebraucht werden, kommen in den Schrank – und innerhalb von Tagen finden sie ein neues Zuhause. Auch für den Lebensmitteltausch mit den Nachbar*innen ist er sehr praktisch und sorgt dafür, dass Lebensmittel im Viertel nicht verschwendet werden.',
+      new THREE.Vector3(0.8, -0.5, -0.3),
     )
     this.addToolTip(
       this.getObjectByName('Gardenbed1'),
