@@ -243,6 +243,7 @@ export default class DomeVision extends VisionLoader {
     meshHouse.flipY = false
     meshHouse.colorSpace = THREE.SRGBColorSpace
 
+    // @ts-ignore
     bakedMeshHouse.material = new THREE.MeshBasicMaterial({
       map: meshHouse,
     })
@@ -257,6 +258,7 @@ export default class DomeVision extends VisionLoader {
     meshDecoration.flipY = false
     meshDecoration.colorSpace = THREE.SRGBColorSpace
 
+    // @ts-ignore
     bakedMeshDecoration.material = new THREE.MeshBasicMaterial({
       map: meshDecoration,
     })
@@ -271,6 +273,7 @@ export default class DomeVision extends VisionLoader {
     meshbase.flipY = false
     meshbase.colorSpace = THREE.SRGBColorSpace
 
+    // @ts-ignore
     bakedMeshbase.material = new THREE.MeshBasicMaterial({
       map: meshbase,
     })
@@ -285,6 +288,7 @@ export default class DomeVision extends VisionLoader {
     meshanbauHaus.flipY = false
     meshanbauHaus.colorSpace = THREE.SRGBColorSpace
 
+    // @ts-ignore
     bakedMeshanbauHaus.material = new THREE.MeshBasicMaterial({
       map: meshanbauHaus,
     })
@@ -299,6 +303,7 @@ export default class DomeVision extends VisionLoader {
     meshwasserTank.flipY = false
     meshwasserTank.colorSpace = THREE.SRGBColorSpace
 
+    // @ts-ignore
     bakedMeshwasserTank.material = new THREE.MeshBasicMaterial({
       map: meshwasserTank,
     })
@@ -313,6 +318,7 @@ export default class DomeVision extends VisionLoader {
     meshtischs.flipY = false
     meshtischs.colorSpace = THREE.SRGBColorSpace
 
+    // @ts-ignore
     bakedMeshtisch.material = new THREE.MeshBasicMaterial({
       map: meshtischs,
     })
@@ -327,6 +333,7 @@ export default class DomeVision extends VisionLoader {
     meshlampen.flipY = false
     meshlampen.colorSpace = THREE.SRGBColorSpace
 
+    // @ts-ignore
     bakedMeshlampen.material = new THREE.MeshBasicMaterial({
       map: meshlampen,
     })
@@ -341,6 +348,7 @@ export default class DomeVision extends VisionLoader {
     meshgemuseBaum.flipY = false
     meshgemuseBaum.colorSpace = THREE.SRGBColorSpace
 
+    // @ts-ignore
     bakedMeshgemuseBaum.material = new THREE.MeshBasicMaterial({
       map: meshgemuseBaum,
     })
@@ -355,6 +363,7 @@ export default class DomeVision extends VisionLoader {
     meshbiene.flipY = false
     meshbiene.colorSpace = THREE.SRGBColorSpace
 
+    // @ts-ignore
     bakedMeshbiene.material = new THREE.MeshBasicMaterial({
       map: meshbiene,
     })
@@ -369,6 +378,7 @@ export default class DomeVision extends VisionLoader {
     meshBeet.flipY = false
     meshBeet.colorSpace = THREE.SRGBColorSpace
 
+    // @ts-ignore
     bakedMeshBeet.material = new THREE.MeshBasicMaterial({
       map: meshBeet,
     })
@@ -383,6 +393,7 @@ export default class DomeVision extends VisionLoader {
     meshContainer.flipY = false
     meshContainer.colorSpace = THREE.SRGBColorSpace
 
+    // @ts-ignore
     bakedMeshContainer.material = new THREE.MeshBasicMaterial({
       map: meshContainer,
     })
@@ -397,6 +408,7 @@ export default class DomeVision extends VisionLoader {
     meshDome.flipY = false
     meshDome.colorSpace = THREE.SRGBColorSpace
 
+    // @ts-ignore
     bakedMeshDome.material = new THREE.MeshBasicMaterial({
       map: meshDome,
     })
@@ -411,6 +423,7 @@ export default class DomeVision extends VisionLoader {
     meshlift.flipY = false
     meshlift.colorSpace = THREE.SRGBColorSpace
 
+    // @ts-ignore
     bakedMeshlift.material = new THREE.MeshBasicMaterial({
       map: meshlift,
     })
