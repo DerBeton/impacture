@@ -10,6 +10,7 @@ import LabelRenderer from './LabelRenderer'
 import Controls from './Controls'
 import BioVision from './world/visions/BioVision'
 import DomeVision from './world/visions/DomeVision'
+import { VisionManager } from './world/visions/VisionManager'
 
 let instance: Experience | null = null
 
@@ -56,15 +57,12 @@ export default class Experience {
   public setFuture(future: string) {
     this.selectedFuture = future
 
-    switch (future) {
-      case '0010':
-        this.world = new World(BioVision)
-        break
-      case '1001':
-        this.world = new World(DomeVision)
-        break
-      default:
-        console.log("future doesn't exist")
+    const VisionClass = VisionManager.getVisionById(future)
+
+    if (VisionClass) {
+      this.world = new World(VisionClass)
+    } else {
+      console.error('Vision string does not match any existing vision')
     }
   }
 

@@ -4,7 +4,7 @@ import Experience from '../Experience'
 import Environment from './Environment'
 import type Resources from '../utils/Resources'
 import Tree from './Tree'
-import BioVision from './visions/BioVision'
+import House from './House'
 import type VisionType from './visions/VisionType'
 
 export default class World {
@@ -13,6 +13,7 @@ export default class World {
   environment!: Environment
   resources: Resources
   tree?: Tree
+  house?: House
   vision?: VisionType
 
   constructor(VisionClass: new () => VisionType) {
@@ -38,10 +39,6 @@ export default class World {
     )
 
     this.scene.add(testMesh)
-  }
-
-  private loadTree() {
-    this.tree = new Tree()
   }
 
   private setVision<T extends VisionType>(VisionClass: new () => T): void {
