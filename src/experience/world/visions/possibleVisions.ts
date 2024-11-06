@@ -1,4 +1,5 @@
 import BioVision from './BioVision'
+import BioVision2 from './BioVision2'
 import DomeVision from './DomeVision'
 import type VisionType from './VisionType'
 
@@ -9,6 +10,11 @@ interface Visions {
 }
 
 export const possibleVisions: Visions[] = [
+  {
+    id: '0000',
+    name: 'Bio Vision 2',
+    class: BioVision2,
+  },
   {
     id: '0010',
     name: 'Bio Vision',

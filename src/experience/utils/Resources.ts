@@ -1,10 +1,14 @@
 import * as THREE from 'three'
 import EventEmitter from './EventEmitter'
-import { DRACOLoader, GLTFLoader } from 'three/examples/jsm/Addons.js'
+import {
+  DRACOLoader,
+  GLTFLoader,
+  RGBELoader,
+} from 'three/examples/jsm/Addons.js'
 
 export interface ResourceItem {
   name: string
-  type: 'cubeTexture' | 'texture' | 'gltfModel' | string
+  type: 'cubeTexture' | 'texture' | 'rgbeTexture' | 'gltfModel' | string
   path: string[]
 }
 
@@ -18,6 +22,7 @@ export default class Resources extends EventEmitter {
     textureLoader?: THREE.TextureLoader
     cubeTextureLoader?: THREE.CubeTextureLoader
     dracoLoader?: DRACOLoader
+    rgbeLoader?: RGBELoader
   } = {}
 
   constructor(sources: ResourceItem[] | null) {
@@ -44,6 +49,7 @@ export default class Resources extends EventEmitter {
     this.loaders.dracoLoader = new DRACOLoader()
     this.loaders.dracoLoader.setDecoderPath('draco/') // Set the path to the Draco decoder
     this.loaders.gltfLoader.setDRACOLoader(this.loaders.dracoLoader)
+    this.loaders.rgbeLoader = new RGBELoader()
   }
 
   private startLoading() {
@@ -56,7 +62,7 @@ export default class Resources extends EventEmitter {
     for (const source of this.sources) {
       if (source.type === 'gltfModel') {
         this.loaders.gltfLoader?.load(source.path[0], file => {
-          // console.log(source, file)
+          console.log(source, file)
           this.sourceLoaded(source, file)
         })
       } else if (source.type === 'texture') {
@@ -66,6 +72,10 @@ export default class Resources extends EventEmitter {
         })
       } else if (source.type === 'cubeTexture') {
         this.loaders.cubeTextureLoader?.load(source.path, file => {
+          console.log(source, file)
+        })
+      } else if (source.type === 'rgbeTexture') {
+        this.loaders.rgbeLoader?.load(source.path[0], file => {
           console.log(source, file)
         })
       }

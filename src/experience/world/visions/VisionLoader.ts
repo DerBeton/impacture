@@ -34,8 +34,10 @@ export default abstract class VisionLoader
   public onResourcesLoaded() {
     console.debug('onResourcesLoaded')
     this.gltf = this.resources.items[this.resourceName]
-    // this.rootObject = this.gltf?.scene // gltf model
-    this.rootObject = this.scene // scene
+    console.log('gltf', this.resources.items[this.resourceName])
+    console.log('hihihih')
+    this.rootObject = this.gltf?.scene // gltf model
+    // this.rootObject = this.scene // scene
     this.setModel()
   }
 
