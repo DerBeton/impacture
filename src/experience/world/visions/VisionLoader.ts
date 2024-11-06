@@ -34,8 +34,6 @@ export default abstract class VisionLoader
   public onResourcesLoaded() {
     console.debug('onResourcesLoaded')
     this.gltf = this.resources.items[this.resourceName]
-    console.log('gltf', this.resources.items[this.resourceName])
-    console.log('hihihih')
     this.rootObject = this.gltf?.scene // gltf model
     // this.rootObject = this.scene // scene
     this.setModel()
@@ -57,6 +55,16 @@ export default abstract class VisionLoader
       )
 
       this.addTooltipClickListener(tooltip)
+    }
+  }
+
+  protected setBakedMaterial(mesh?: THREE.Object3D, texture?: THREE.Texture) {
+    if (mesh instanceof THREE.Mesh && texture instanceof THREE.Texture) {
+      texture.flipY = false
+      texture.colorSpace = THREE.SRGBColorSpace
+      mesh.material = new THREE.MeshBasicMaterial({
+        map: texture,
+      })
     }
   }
 
