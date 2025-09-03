@@ -12,17 +12,15 @@
         <h3 class="question">{{ question }}</h3>
         <div class="vote-buttons">
           <VoteButton
-            :selected="answer"
-            type="yes"
-            @yes="emit('voted', 'yes')"
-            :disabled="!isPathValid('yes')"
-          ></VoteButton>
+              text="Ja"
+              @pressed="emit('voted', 'yes')"
+              :disabled="!isPathValid('yes')"
+          />
           <VoteButton
-            :selected="answer"
-            type="no"
-            @no="emit('voted', 'no')"
-            :disabled="!isPathValid('no')"
-          ></VoteButton>
+              text="Nein"
+              @pressed="emit('voted', 'no')"
+              :disabled="!isPathValid('no')"
+          />
         </div>
       </div>
       <div class="progress">
@@ -40,9 +38,9 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import VoteButton from './VoteButtons.vue'
 import { useParallax } from '@vueuse/core'
 import { VisionManager } from '@/experience/world/visions/VisionManager';
+import VoteButton from "@/components/voting/VoteButton.vue";
 
 const props = defineProps<{
   question: string
