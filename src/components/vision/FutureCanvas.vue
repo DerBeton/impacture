@@ -7,6 +7,9 @@
 <script setup lang="ts">
 import Experience from '@/experience/Experience'
 import { onMounted, ref } from 'vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter();
 
 const props = defineProps<{
   visionString: string
@@ -17,7 +20,10 @@ const canvasElement = ref<HTMLCanvasElement | null>()
 onMounted(() => {
   if (canvasElement.value) {
     const experience = new Experience(canvasElement.value)
-    experience.setFuture(props.visionString)
+
+    if(!experience.setFuture(props.visionString)) {
+      router.replace('/vote');
+    }
   }
 })
 </script>

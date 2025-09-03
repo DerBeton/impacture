@@ -54,16 +54,19 @@ export default class Experience {
     this.registerEventListeners()
   }
 
-  public setFuture(future: string) {
+  public setFuture(future: string): boolean {
     this.selectedFuture = future
 
     const VisionClass = VisionManager.getVisionById(future)
 
     if (VisionClass) {
       this.world = new World(VisionClass)
+      return true;
     } else {
       console.error('Vision string does not match any existing vision')
     }
+
+    return false;
   }
 
   private registerEventListeners() {

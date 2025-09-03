@@ -2,13 +2,13 @@ import BioVision from './BioVision'
 import DomeVision from './DomeVision'
 import type VisionType from './VisionType'
 
-interface Visions {
+interface Vision {
   id: string
   name: string
   class: new () => VisionType
 }
 
-export const possibleVisions: Visions[] = [
+export const possibleVisions: Vision[] = [
   {
     id: '0010',
     name: 'Bio Vision',
