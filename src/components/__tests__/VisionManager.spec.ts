@@ -31,7 +31,7 @@ describe('VisionManager.isPathPossible', () => {
   })
 
   it('should return false if no vision continues this path', () => {
-    expect(VisionManager.isPathPossible('0', 'yes')).toBe(false) // no vision 01...
+    expect(VisionManager.isPathPossible('1', 'yes')).toBe(false) // no vision 11...
     expect(VisionManager.isPathPossible('01', 'yes')).toBe(false) // dead end
   })
 })
