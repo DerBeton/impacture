@@ -89,7 +89,7 @@ const emit = defineEmits<{
 
   // for 3d flip effect
   perspective: 1000px;
-  transform-style: preserve-3d;
+  // transform-style: preserve-3d; --> removal fixed the not being able to click the buttons
 
   &.-flipped {
     .front-side {

@@ -13,7 +13,7 @@ export class VisionManager {
 
     for (const vision of possibleVisions) {
       if (vision.id.startsWith(currentPath)) {
-        if (vision.id.at(nextPosition) === answerMapped) {
+        if (vision.id.charAt(nextPosition) === answerMapped) {
           return true // stops execution
         }
       }
